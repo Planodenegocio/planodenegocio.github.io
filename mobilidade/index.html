@@ -1,0 +1,2570 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Projeto Mobilidade Angola — Uma visão by SAMBA</title>
+<meta name="description" content="Uma visão estratégica de marca, mobilidade, segurança e experiência criada pela SAMBA.">
+<meta name="theme-color" content="#14082A">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SAMBA · Creative Strategic Agency">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://planodenegocio.github.io/mobilidade/">
+<meta property="og:title" content="Projeto Mobilidade Angola — Uma visão by SAMBA">
+<meta property="og:description" content="Uma visão estratégica de marca, mobilidade, segurança e experiência criada pela SAMBA.">
+<meta property="og:image" content="https://planodenegocio.github.io/mobilidade/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Projeto Mobilidade Angola — Uma visão by SAMBA">
+<meta name="twitter:description" content="Uma visão estratégica de marca, mobilidade, segurança e experiência criada pela SAMBA.">
+<meta name="twitter:image" content="https://planodenegocio.github.io/mobilidade/og.png">
+<link rel="icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&family=Sora:wght@400;500;600;700;800&display=swap">
+
+<style>
+/* ============================================================
+   APRESENTAÇÃO CONCEITUAL — MOBILIDADE ANGOLA
+   Concept by SAMBA.
+
+   ATO 1 e ATO 3  →  design system SAMBA (verde/amarelo/azul, Archivo)
+   ATO 2          →  universo visual próprio, escopo .act2
+                     (roxo profundo, violeta, marfim, grafite, Sora)
+
+   O Ato 2 redefine todos os tokens localmente — mesma técnica
+   das faixas .band--* do site principal. Herda a engenharia de
+   layout da SAMBA, não herda nenhuma cor, fonte ou forma.
+
+   PROTÓTIPO CONCEITUAL — simulação local, sem backend, sem API,
+   sem rede, sem persistência, sem dados reais.
+   ============================================================ */
+
+:root{
+  --ink:#0A100C;
+  --ground:#F2F3EF;
+  --surface:#FFFFFF;
+  --muted:#5F675F;
+  --line:rgba(10,16,12,.15);
+
+  /* cores do logo oficial SAMBA */
+  --verde:#024528;
+  --verde-vivo:#0B8B47;
+  --amarelo:#FDC40B;
+  --azul:#1B3CE8;
+
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"DM Mono",ui-monospace,"SF Mono",Menlo,monospace;
+
+  --pad:clamp(20px,5vw,72px);
+  --maxw:1180px;
+}
+
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body.is-locked{overflow:hidden}
+
+img{max-width:100%}
+[hidden]{display:none!important}
+
+:focus-visible{outline:3px solid var(--azul);outline-offset:3px;border-radius:2px}
+
+/* ---------- faixas cromáticas ---------- */
+.band{
+  background:var(--ground);
+  color:var(--ink);
+  padding:clamp(64px,11vw,140px) var(--pad);
+  position:relative;
+  overflow:hidden;
+}
+.band__in{max-width:var(--maxw);margin:0 auto}
+
+.band--ink{--ground:#0A100C;--ink:#F2F3EF;--muted:rgba(242,243,239,.74);--line:rgba(242,243,239,.18);--surface:#141B15}
+.band--sun{--ground:#FDC40B;--ink:#024528;--muted:rgba(2,69,40,.86);--line:rgba(2,69,40,.24);--surface:rgba(2,69,40,.07)}
+.band--sea{--ground:#1B3CE8;--ink:#FFFFFF;--muted:rgba(255,255,255,.84);--line:rgba(255,255,255,.28);--surface:rgba(255,255,255,.08)}
+.band--leaf{--ground:#024528;--ink:#F2F3EF;--muted:rgba(242,243,239,.80);--line:rgba(242,243,239,.22);--surface:rgba(242,243,239,.07)}
+
+/* ---------- tipografia SAMBA ---------- */
+.eyebrow{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin:0 0 clamp(20px,3vw,34px);
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+}
+.eyebrow::before{
+  content:"";width:26px;height:8px;flex:none;
+  background:currentColor;
+  clip-path:polygon(0 0,74% 0,100% 100%,26% 100%);
+  opacity:.85;
+}
+
+.huge{
+  font-family:var(--display);
+  font-variation-settings:"wdth" 112,"wght" 800;
+  font-weight:800;
+  font-size:clamp(3.1rem,13.5vw,10.5rem);
+  line-height:.84;letter-spacing:-.035em;text-transform:uppercase;
+  margin:0;text-wrap:balance;
+}
+.big{
+  font-family:var(--display);
+  font-variation-settings:"wdth" 105,"wght" 750;
+  font-weight:750;
+  font-size:clamp(2.1rem,6.4vw,4.6rem);
+  line-height:.94;letter-spacing:-.028em;text-transform:uppercase;
+  margin:0;text-wrap:balance;
+}
+.mid{
+  font-family:var(--display);
+  font-variation-settings:"wdth" 100,"wght" 700;
+  font-weight:700;
+  font-size:clamp(1.35rem,2.9vw,2.05rem);
+  line-height:1.06;letter-spacing:-.018em;margin:0;text-wrap:balance;
+}
+.lede{font-size:clamp(1.08rem,2.05vw,1.35rem);line-height:1.5;max-width:46ch;margin:0}
+p{max-width:62ch;margin:0}
+.dim{color:var(--muted)}
+.note{font-family:var(--mono);font-size:12.5px;line-height:1.65;letter-spacing:.02em;color:var(--muted);max-width:64ch}
+
+/* ================= ESCALA TIPOGRÁFICA ==================
+   TÍTULOS   hero(.huge) · seção(.big) · sub(.mid) · card · label
+   CORPO     body-large(.lede) · body(17/1.6) · small(15/1.55) · caption(12.5/1.65)
+   Dois tamanhos de título de card, não seis. O line-height difere
+   por família: Archivo em caixa-alta fecha em 1.0; Sora em frase
+   precisa de 1.14 para não colar as linhas.
+   ======================================================= */
+
+/* card-title — grades de 3 a 5 colunas */
+.pillar__t,.rung__t,.phase__t,.plan__t{
+  font-size:clamp(1.15rem,2.05vw,1.45rem);line-height:1;
+}
+.card__t,.badge__n{
+  font-size:clamp(1.15rem,2.05vw,1.45rem);line-height:1.14;
+}
+/* card-title-lg — blocos largos em duas colunas */
+.svc__t{font-size:clamp(1.3rem,2.5vw,1.75rem);line-height:.98}
+
+/* label — um único padrão de etiqueta */
+.card__k,.pillar__k,.plan__n,.rung__k,.phase__k,.svc__k{
+  font-size:11px;letter-spacing:.17em;
+}
+.eyebrow{font-size:12px;letter-spacing:.17em;line-height:1.6}
+
+/* respiro interno igual entre os elementos de um bloco */
+.card,.pillar,.phase,.rung,.car{gap:12px}
+
+/* nível intermediário: destaque de seção que não é abertura de ato */
+.huge--md{font-size:clamp(2.7rem,10.5vw,7rem)}
+
+.lineblk{display:block}
+.lineblk+.lineblk{margin-top:.42em}
+
+/* ---------- ritmo tipográfico unificado ----------
+   Três medidas de corpo em toda a apresentação, não sete:
+   17px/1.6 corpo · 15px/1.55 dentro de bloco · 14px/1.5 listas.
+   Antes, 14.5px aparecia com 1.50 e 1.55 em blocos vizinhos —
+   era o que dava a sensação de texto "pulando".                   */
+
+/* quebras equilibradas; pretty evita palavra órfã na última linha */
+.huge,.big,.mid,.sig,.pillar__t,.card__t,.svc__t,.rung__t,.phase__t,.plan__t,.era__t,.enter__q{text-wrap:balance}
+p,li,.lede,.note{text-wrap:pretty}
+
+/* quebras manuais são composição de desktop; no celular atrapalham */
+@media (max-width:760px){
+  .big br,.mid br,.sig br{display:none}
+}
+
+/* respiro interno igual em todos os blocos de conteúdo */
+.card,.pillar,.phase,.rung,.car{padding:clamp(22px,2.7vw,30px)}
+
+/* ---------- compasso ---------- */
+.beat{display:flex;align-items:flex-end;gap:5px;height:34px}
+.beat i{display:block;border-radius:1px;background:currentColor;transform-origin:bottom}
+.beat i:nth-child(1){width:30px;height:100%}
+.beat i:nth-child(2){width:12px;height:46%}
+.beat i:nth-child(3){width:20px;height:78%}
+.beat i:nth-child(4){width:10px;height:34%}
+.beat i:nth-child(5){width:34px;height:64%}
+.beat i:nth-child(6){width:12px;height:92%}
+.beat i:nth-child(7){width:22px;height:40%}
+
+.beat--color i:nth-child(1){background:var(--verde)}
+.beat--color i:nth-child(2){background:var(--amarelo)}
+.beat--color i:nth-child(3){background:var(--verde-vivo)}
+.beat--color i:nth-child(4){background:var(--amarelo)}
+.beat--color i:nth-child(5){background:var(--verde)}
+.beat--color i:nth-child(6){background:var(--azul)}
+.beat--color i:nth-child(7){background:var(--amarelo)}
+
+@media (prefers-reduced-motion:no-preference){
+  .beat--live i{animation:pulse 1.9s cubic-bezier(.3,0,.2,1) infinite}
+  .beat--live i:nth-child(1){animation-delay:0s}
+  .beat--live i:nth-child(2){animation-delay:.24s}
+  .beat--live i:nth-child(3){animation-delay:.36s}
+  .beat--live i:nth-child(4){animation-delay:.72s}
+  .beat--live i:nth-child(5){animation-delay:.83s}
+  .beat--live i:nth-child(6){animation-delay:1.19s}
+  .beat--live i:nth-child(7){animation-delay:1.42s}
+}
+@keyframes pulse{0%,100%{transform:scaleY(1)}8%{transform:scaleY(1.55)}30%{transform:scaleY(1)}}
+
+.ruler{display:flex;height:10px;width:100%}
+.ruler span{display:block;height:100%}
+
+/* ---------- abertura ---------- */
+.hero{padding:clamp(40px,7vw,68px) var(--pad) clamp(56px,9vw,104px);background:var(--ground);position:relative}
+.hero__in{max-width:var(--maxw);margin:0 auto}
+
+.mark{display:flex;align-items:center;gap:18px;margin-bottom:clamp(28px,5vw,54px);flex-wrap:wrap}
+.logo{display:block;width:auto;height:clamp(64px,9vw,104px)}
+.wordmark{display:block;width:100%;max-width:1180px;height:auto}
+.wordmark__sub{
+  font-family:var(--mono);font-size:clamp(10px,1.55vw,15px);
+  letter-spacing:.34em;text-transform:uppercase;color:var(--muted);
+  margin:clamp(12px,1.8vw,20px) 0 clamp(30px,4.6vw,52px);display:block;
+}
+.mark__tag{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;line-height:1.7;
+  text-transform:uppercase;color:var(--muted);margin-left:auto;text-align:right;
+}
+@media (max-width:640px){.mark__tag{margin-left:0;text-align:left;width:100%}}
+
+.rise{animation:rise .7s cubic-bezier(.16,.84,.3,1) both}
+.rise-2{animation-delay:.08s}
+.rise-3{animation-delay:.16s}
+.rise-4{animation-delay:.24s}
+@keyframes rise{from{transform:translateY(18px)}to{transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){.rise{animation:none}}
+
+.hero__title{margin:0 0 clamp(26px,4vw,40px)}
+.hero__title em{font-style:normal;color:var(--verde-vivo)}
+.hero__title span{display:block}
+
+.hero__grid{
+  display:grid;gap:clamp(24px,4vw,48px);grid-template-columns:1fr;
+  border-top:1px solid var(--line);padding-top:clamp(24px,3.5vw,38px);
+}
+@media (min-width:820px){.hero__grid{grid-template-columns:1.25fr .95fr;align-items:start}}
+
+.sig{
+  font-family:var(--display);
+  font-variation-settings:"wdth" 96,"wght" 620;font-weight:620;
+  font-size:clamp(1.5rem,3.9vw,2.6rem);
+  line-height:1.02;letter-spacing:-.022em;margin:0 0 14px;text-wrap:balance;
+}
+.sig--en{
+  font-family:var(--mono);font-weight:400;font-size:clamp(.82rem,1.6vw,1rem);
+  letter-spacing:.13em;text-transform:uppercase;color:var(--muted);line-height:1.5;
+}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chip{
+  font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;
+  padding:7px 13px;border-radius:100px;color:#0A100C;
+}
+.chip--v{background:var(--verde);color:#FDC40B}
+.chip--a{background:var(--amarelo);color:#024528}
+.chip--z{background:var(--azul);color:#fff}
+.chip--n{background:var(--ink);color:var(--ground)}
+
+/* ---------- blocos genéricos ---------- */
+.stack{display:grid;gap:clamp(18px,3vw,30px)}
+.split{display:grid;gap:clamp(28px,5vw,64px);grid-template-columns:1fr}
+@media (min-width:860px){.split{grid-template-columns:.85fr 1.15fr;align-items:start}}
+
+.figs{display:grid;gap:0;grid-template-columns:1fr;border-top:2px solid var(--ink);margin-top:clamp(30px,5vw,52px)}
+@media (min-width:700px){.figs{grid-template-columns:1fr 1fr}}
+@media (min-width:1000px){.figs{grid-template-columns:repeat(4,1fr)}}
+.fig{padding:clamp(22px,3vw,32px) 0 clamp(24px,3.4vw,36px);border-bottom:1px solid var(--line)}
+@media (min-width:700px){
+  .fig{padding-right:clamp(18px,2.6vw,32px)}
+  .fig+.fig{padding-left:clamp(18px,2.6vw,32px);border-left:1px solid var(--line)}
+  .fig:nth-child(3){border-left:0;padding-left:0}
+}
+@media (min-width:1000px){.fig:nth-child(3){border-left:1px solid var(--line);padding-left:clamp(18px,2.6vw,32px)}}
+.fig__n{
+  font-family:var(--display);font-variation-settings:"wdth" 108,"wght" 820;font-weight:820;
+  font-size:clamp(2.9rem,7.6vw,5.1rem);line-height:.88;letter-spacing:-.04em;
+  font-variant-numeric:tabular-nums;margin:0 0 12px;
+}
+.fig__l{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);line-height:1.55;margin:0}
+
+.pillars{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:clamp(32px,5vw,54px)}
+@media (min-width:720px){.pillars{grid-template-columns:1fr 1fr}}
+@media (min-width:1040px){.pillars{grid-template-columns:repeat(5,1fr)}}
+.pillar{background:var(--ground);padding:clamp(22px,2.6vw,30px);display:grid;gap:12px;align-content:start}
+.pillar__k{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--muted)}
+.pillar__t{
+  font-family:var(--display);font-variation-settings:"wdth" 108,"wght" 800;font-weight:800;
+  font-size:clamp(1.25rem,2.3vw,1.6rem);letter-spacing:-.018em;text-transform:uppercase;line-height:.98;margin:0;
+}
+.pillar p{font-size:15px;line-height:1.55;color:var(--muted);margin:0}
+
+.equation{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 14px;margin-top:clamp(34px,5vw,58px);
+  font-family:var(--display);font-variation-settings:"wdth" 104,"wght" 780;font-weight:780;
+  text-transform:uppercase;letter-spacing:-.02em;font-size:clamp(1.3rem,3.6vw,2.5rem);line-height:1;
+}
+.equation .op{color:var(--muted);font-family:var(--mono);font-weight:400;font-size:.62em;letter-spacing:0}
+.equation .out{background:var(--ink);color:var(--ground);padding:.1em .28em .16em}
+
+.svc{display:grid;gap:0;margin-top:clamp(32px,5vw,52px);border-top:2px solid var(--ink)}
+@media (min-width:760px){.svc{grid-template-columns:1fr 1fr}}
+.svc__item{display:grid;gap:10px;align-content:start;padding:clamp(20px,2.6vw,28px) 0;border-bottom:1px solid var(--line);position:relative}
+@media (min-width:760px){
+  .svc__item{padding-right:clamp(20px,3vw,44px)}
+  .svc__item:nth-child(even){padding-left:clamp(20px,3vw,44px);padding-right:0;border-left:1px solid var(--line)}
+}
+.svc__k{font-family:var(--mono);font-size:10.5px;letter-spacing:.17em;text-transform:uppercase;display:flex;align-items:center;gap:9px;color:var(--muted)}
+.svc__k b{display:block;width:16px;height:6px;border-radius:1px;flex:none}
+.svc__t{
+  font-family:var(--display);font-variation-settings:"wdth" 110,"wght" 800;font-weight:800;
+  font-size:clamp(1.3rem,2.7vw,1.85rem);text-transform:uppercase;line-height:.97;letter-spacing:-.022em;margin:0;
+}
+.svc__item p{font-size:15px;line-height:1.55;color:var(--muted);margin:0;max-width:46ch}
+
+.ladder{display:grid;gap:0;margin-top:clamp(34px,5vw,54px);border:1px solid var(--line)}
+@media (min-width:820px){.ladder{grid-template-columns:repeat(3,1fr)}}
+.rung{padding:clamp(20px,2.6vw,28px);display:grid;gap:9px;align-content:start;border-bottom:1px solid var(--line)}
+@media (min-width:820px){.rung{border-bottom:0;border-right:1px solid var(--line)}.rung:last-child{border-right:0}}
+.rung:last-child{border-bottom:0}
+.rung__k{font-family:var(--mono);font-size:10.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--muted)}
+.rung__t{font-family:var(--display);font-variation-settings:"wdth" 104,"wght" 780;font-weight:780;font-size:1.15rem;text-transform:uppercase;letter-spacing:-.015em;margin:0;line-height:1}
+.rung p{font-size:15px;line-height:1.55;color:var(--muted);margin:0}
+
+/* fases do Ato 3 — variação do ladder para 5 colunas */
+.phases{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:clamp(34px,5vw,54px)}
+@media (min-width:640px){.phases{grid-template-columns:1fr 1fr}}
+@media (min-width:1060px){.phases{grid-template-columns:repeat(5,1fr)}}
+.phase{background:var(--ground);padding:clamp(20px,2.4vw,28px);display:grid;gap:10px;align-content:start}
+.phase__k{font-family:var(--mono);font-size:10.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--muted)}
+.phase__t{font-family:var(--display);font-variation-settings:"wdth" 106,"wght" 800;font-weight:800;font-size:clamp(1.1rem,2vw,1.35rem);text-transform:uppercase;line-height:.98;letter-spacing:-.018em;margin:0}
+.phase p{font-size:14px;line-height:1.5;color:var(--muted);margin:0}
+.phase ul{margin:0;padding:0;list-style:none;display:grid;gap:5px}
+.phase li{font-size:14px;line-height:1.55;padding-left:14px;position:relative;color:var(--muted)}
+.phase li::before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;background:currentColor;opacity:.5}
+
+/* fechamento */
+.close{text-align:left}
+.close__mark{display:grid;justify-items:start;gap:clamp(14px,2.4vw,26px);margin-bottom:clamp(34px,5.5vw,56px)}
+
+.foot{padding:26px var(--pad) 40px;background:var(--ground);color:var(--muted);font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.foot__in{max-width:var(--maxw);margin:0 auto;display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between}
+
+/* ============================================================
+   ATO 2 — UNIVERSO DA FUTURA MARCA DE MOBILIDADE
+   Escopo .act2 — redefine todos os tokens localmente.
+   Nenhuma cor, fonte ou forma da SAMBA entra aqui.
+   Marca sem naming definido: símbolo abstrato provisório + "Nova Marca".
+   ============================================================ */
+
+.act2{
+  --ground:#14082A;
+  --surface:#200D3B;
+  --surface-2:#2B1150;
+  --ink:#F5F0E6;
+  --muted:rgba(245,240,230,.66);
+  --line:rgba(245,240,230,.14);
+
+  --roxo:#14082A;
+  --roxo-md:#200D3B;
+  --violeta:#7C3AED;
+  --violeta-cl:#A78BFA;
+  --marfim:#F5F0E6;
+  --grafite:#2F2F38;
+  --ok:#22C55E;
+
+  --display:"Sora","Helvetica Neue",Arial,sans-serif;
+  --body:"Sora","Helvetica Neue",Arial,sans-serif;
+  --mono:"Sora","Helvetica Neue",Arial,sans-serif;
+
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--body);
+}
+
+.act2 .band{background:var(--ground);color:var(--ink)}
+.act2 .band--deep{--ground:#14082A;--ink:#F5F0E6;--muted:rgba(245,240,230,.60);--line:rgba(245,240,230,.14);--surface:#200D3B}
+.act2 .band--violet{--ground:#5B21B6;--ink:#F5F0E6;--muted:rgba(245,240,230,.74);--line:rgba(245,240,230,.26);--surface:rgba(245,240,230,.10)}
+.act2 .band--ivory{--ground:#F5F0E6;--ink:#1C1526;--muted:rgba(28,21,38,.62);--line:rgba(28,21,38,.16);--surface:#FFFFFF}
+.act2 .band--graphite{--ground:#22222A;--ink:#F5F0E6;--muted:rgba(245,240,230,.58);--line:rgba(245,240,230,.14);--surface:#2F2F38}
+
+/* tipografia do Ato 2 — Sora, sem variable width, sem uppercase pesado */
+.act2 .huge{
+  font-family:var(--display);font-variation-settings:normal;font-weight:800;
+  font-size:clamp(2.7rem,10.5vw,8rem);line-height:.92;letter-spacing:-.045em;text-transform:none;
+}
+.act2 .big{
+  font-family:var(--display);font-variation-settings:normal;font-weight:700;
+  font-size:clamp(1.9rem,5.4vw,3.8rem);line-height:1.02;letter-spacing:-.035em;text-transform:none;
+}
+.act2 .mid{
+  font-family:var(--display);font-variation-settings:normal;font-weight:600;
+  font-size:clamp(1.25rem,2.7vw,1.9rem);line-height:1.15;letter-spacing:-.022em;
+}
+.act2 .sig{
+  font-family:var(--display);font-variation-settings:normal;font-weight:500;
+  font-size:clamp(1.25rem,3.2vw,2.1rem);line-height:1.2;letter-spacing:-.025em;
+}
+.act2 .eyebrow{
+  font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:.22em;
+}
+.act2 .eyebrow::before{
+  width:8px;height:8px;border-radius:50%;clip-path:none;
+  background:var(--violeta-cl);opacity:1;
+}
+.act2 .note{font-family:var(--body);font-size:12.5px;line-height:1.65;font-weight:400;letter-spacing:.02em}
+.act2 .lede{font-weight:400}
+
+/* símbolo conceitual provisório — losango de proteção + rota interna */
+.glyph{display:block;width:auto}
+.glyph .g-shield{fill:none;stroke:currentColor;stroke-width:5.5;stroke-linejoin:round}
+.glyph .g-route{fill:none;stroke:currentColor;stroke-width:5.5;stroke-linecap:round;stroke-linejoin:round}
+.glyph .g-dot{fill:currentColor}
+
+@media (prefers-reduced-motion:no-preference){
+  .glyph--live .g-route{
+    stroke-dasharray:64;stroke-dashoffset:64;
+    animation:trace 2.8s cubic-bezier(.5,0,.2,1) infinite;
+  }
+  .glyph--live .g-dot{animation:dotfade 2.8s cubic-bezier(.5,0,.2,1) infinite}
+}
+@keyframes trace{0%{stroke-dashoffset:64}45%,100%{stroke-dashoffset:0}}
+@keyframes dotfade{0%,35%{opacity:0;transform:scale(.4)}55%,100%{opacity:1;transform:scale(1)}}
+
+/* marca conceitual sem nome */
+.brandlock{display:grid;gap:clamp(16px,2.6vw,26px);justify-items:start}
+.brandlock__row{display:flex;align-items:center;gap:clamp(14px,2.4vw,22px);flex-wrap:wrap}
+.brandlock__name{
+  font-family:var(--display);font-weight:800;
+  font-size:clamp(2rem,6vw,4.2rem);line-height:1;letter-spacing:-.05em;
+  color:var(--muted);
+}
+.brandlock__tag{
+  font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--violeta-cl);
+}
+.placeholder{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  padding:6px 12px;border-radius:100px;
+  border:1px dashed var(--line);color:var(--muted);
+}
+
+/* paleta conceitual */
+.swatches{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:clamp(28px,4vw,44px)}
+@media (min-width:640px){.swatches{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1000px){.swatches{grid-template-columns:repeat(6,1fr)}}
+.sw{padding:clamp(16px,2vw,22px);display:grid;gap:10px;align-content:start;background:var(--surface)}
+.sw__chip{height:clamp(52px,7vw,78px);border-radius:3px;border:1px solid rgba(245,240,230,.10)}
+.sw__n{font-size:12px;font-weight:600;letter-spacing:.02em;margin:0}
+.sw__h{font-size:12px;font-weight:400;letter-spacing:.1em;color:var(--muted);margin:0;font-variant-numeric:tabular-nums}
+
+/* grade de cards genérica do Ato 2 */
+.cards{display:grid;gap:clamp(14px,2vw,20px);grid-template-columns:1fr;margin-top:clamp(30px,4.4vw,48px)}
+@media (min-width:680px){.cards--2{grid-template-columns:1fr 1fr}}
+@media (min-width:680px){.cards--3{grid-template-columns:1fr 1fr}}
+@media (min-width:1000px){.cards--3{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:640px){.cards--4{grid-template-columns:1fr 1fr}}
+@media (min-width:1040px){.cards--4{grid-template-columns:repeat(4,1fr)}}
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  padding:clamp(20px,2.6vw,30px);display:grid;gap:12px;align-content:start;
+}
+.card__k{font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--violeta-cl)}
+.card__t{font-family:var(--display);font-weight:600;font-size:clamp(1.05rem,2vw,1.35rem);line-height:1.15;letter-spacing:-.02em;margin:0}
+.card p{font-size:15px;line-height:1.55;color:var(--muted);margin:0}
+.card__ico{width:30px;height:30px;color:var(--violeta-cl)}
+
+/* cartão conceitual */
+.cardstage{
+  position:relative;margin-top:clamp(32px,5vw,56px);
+  min-height:clamp(260px,42vw,420px);
+  display:flex;align-items:center;justify-content:center;
+  perspective:1400px;
+}
+.paycard{
+  width:min(100%,380px);aspect-ratio:1.586;border-radius:18px;
+  padding:clamp(18px,2.6vw,26px);
+  display:grid;grid-template-rows:auto 1fr auto;gap:10px;
+  position:relative;overflow:hidden;
+  box-shadow:0 30px 70px -20px rgba(0,0,0,.65);
+}
+.paycard--phys{
+  background:linear-gradient(135deg,#2B1150 0%,#5B21B6 55%,#7C3AED 100%);
+  color:#F5F0E6;
+}
+.paycard--virt{
+  background:linear-gradient(135deg,#F5F0E6 0%,#E3DACA 100%);
+  color:#1C1526;
+}
+@media (min-width:820px){
+  .cardstage{gap:0}
+  .paycard--phys{transform:rotate(-7deg) translateX(-8%)}
+  .paycard--virt{transform:rotate(6deg) translateX(8%);position:absolute}
+}
+@media (max-width:819px){
+  .cardstage{flex-direction:column;gap:20px}
+  .paycard--virt{transform:none}
+}
+.paycard__top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.paycard__glyph{width:clamp(28px,4vw,38px);height:auto}
+.paycard__kind{font-size:9.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;opacity:.7;text-align:right}
+.paycard__chip{
+  width:clamp(36px,5vw,46px);height:clamp(27px,3.8vw,34px);border-radius:6px;
+  background:linear-gradient(135deg,#D9C68A,#B79A4E 60%,#E8DCB0);
+  align-self:center;
+}
+.paycard--virt .paycard__chip{background:linear-gradient(135deg,#C4B7E8,#7C3AED 70%,#A78BFA)}
+.paycard__num{
+  font-family:var(--display);font-weight:500;
+  font-size:clamp(.95rem,2.4vw,1.25rem);letter-spacing:.14em;
+  font-variant-numeric:tabular-nums;margin:0;
+}
+.paycard__foot{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.paycard__name{font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;opacity:.85}
+.paycard__net{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.6}
+.paycard__shine{
+  position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.14) 48%,transparent 60%);
+}
+
+/* frota — silhueta de carro */
+.fleet{display:grid;gap:clamp(14px,2vw,20px);grid-template-columns:1fr;margin-top:clamp(30px,4.4vw,48px)}
+@media (min-width:760px){.fleet{grid-template-columns:1fr 1fr}}
+.car{
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  padding:clamp(20px,2.6vw,28px);display:grid;gap:16px;align-content:start;
+}
+.car>svg{width:100%;height:auto;display:block}
+.car__k{font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--violeta-cl)}
+.car p{font-size:15px;line-height:1.55;color:var(--muted);margin:0}
+
+/* credencial do motorista */
+.badge{
+  background:var(--surface);border:1px solid var(--line);border-radius:16px;
+  padding:clamp(20px,2.6vw,28px);display:grid;gap:16px;align-content:start;
+}
+.badge__head{display:flex;align-items:center;gap:14px}
+.badge__head>div{min-width:0}
+.badge__av{width:56px;height:56px;border-radius:50%;flex:none}
+.badge__n{font-family:var(--display);font-weight:600;font-size:1.05rem;margin:0;letter-spacing:-.01em}
+.badge__id{font-size:12.5px;line-height:1.65;font-weight:500;letter-spacing:.1em;color:var(--muted);margin:0;font-variant-numeric:tabular-nums}
+.badge__seals{display:grid;gap:8px}
+.seal{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:500;color:var(--ink)}
+.seal b{
+  width:18px;height:18px;border-radius:50%;flex:none;
+  background:var(--ok);color:#06210F;
+  display:grid;place-items:center;font-size:11px;font-weight:800;
+}
+.seal--off b{background:var(--line);color:var(--muted)}
+
+/* campanha conceitual */
+.camp{display:grid;gap:clamp(14px,2vw,20px);grid-template-columns:1fr;margin-top:clamp(30px,4.4vw,48px)}
+@media (min-width:700px){.camp{grid-template-columns:repeat(3,1fr)}}
+.piece{
+  aspect-ratio:4/5;border-radius:14px;padding:clamp(18px,2.4vw,26px);
+  display:flex;flex-direction:column;justify-content:space-between;
+  position:relative;overflow:hidden;
+}
+.piece--a{background:linear-gradient(160deg,#2B1150,#5B21B6)}
+.piece--b{background:#F5F0E6;color:#1C1526}
+.piece--c{background:linear-gradient(160deg,#A78BFA,#C4B5FD);color:#1C0B35}
+.piece__t{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(1.15rem,2.6vw,1.6rem);line-height:1.08;letter-spacing:-.03em;margin:0;
+}
+.piece__f{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;opacity:.65}
+.piece__glyph{width:26px;height:auto;opacity:.8}
+
+/* régua de transição SAMBA <-> marca nova */
+.shift{display:flex;height:14px;width:100%}
+.shift span{display:block;height:100%;flex:1}
+
+/* ---------- CENA DE PASSAGEM: A NOVA ERA ---------- */
+.era{
+  min-height:78svh;
+  display:grid;place-items:center;
+  padding:clamp(70px,13vw,140px) var(--pad);
+  text-align:center;position:relative;overflow:hidden;
+  /* a passagem cromática completa: verde SAMBA → azul → violeta → roxo */
+  background:linear-gradient(175deg,
+    #024528 0%,
+    #06503A 14%,
+    #123E86 31%,
+    #2B2CC4 46%,
+    #5B21B6 66%,
+    #2B1150 84%,
+    #14082A 100%);
+  color:#F5F0E6;
+}
+@supports not (min-height:78svh){.era{min-height:78vh}}
+.era__in{max-width:900px;position:relative;z-index:2;display:grid;justify-items:center;gap:clamp(22px,3.4vw,38px)}
+.era__k{
+  font-family:"Sora",sans-serif;font-size:12px;font-weight:600;
+  letter-spacing:.3em;text-transform:uppercase;color:rgba(245,240,230,.7);margin:0;
+}
+.era__t{
+  font-family:"Sora",sans-serif;font-weight:800;
+  font-size:clamp(3rem,13vw,9rem);line-height:.92;letter-spacing:-.055em;
+  margin:0;text-wrap:balance;
+}
+.era__t span{display:block}
+.era__p{
+  font-family:"Sora",sans-serif;font-weight:400;
+  font-size:clamp(1.08rem,2.05vw,1.35rem);line-height:1.5;
+  color:rgba(245,240,230,.82);max-width:36ch;margin:0;
+}
+.era__rule{width:1px;height:clamp(40px,7vw,72px);background:linear-gradient(180deg,rgba(245,240,230,.05),rgba(245,240,230,.6))}
+
+/* ---------- SEÇÃO DE TRANSIÇÃO INTERATIVA ---------- */
+.enter{
+  padding:clamp(90px,17vw,200px) var(--pad);
+  text-align:center;position:relative;overflow:hidden;
+  background:radial-gradient(120% 80% at 50% 12%,#3A1470 0%,#1B0A36 48%,#14082A 100%);
+  color:#F5F0E6;
+}
+.enter__in{max-width:900px;margin:0 auto;position:relative;z-index:2}
+.enter__q{
+  font-family:"Sora",sans-serif;font-weight:800;
+  font-size:clamp(2.1rem,7.4vw,4.6rem);line-height:1.02;letter-spacing:-.045em;
+  margin:0 0 clamp(20px,3vw,30px);text-wrap:balance;
+}
+.enter__q span{display:block}
+.enter__sub{
+  font-family:"Sora",sans-serif;font-weight:400;
+  font-size:clamp(1.08rem,2.05vw,1.35rem);line-height:1.5;color:rgba(245,240,230,.72);
+  margin:0 auto clamp(40px,6vw,64px);max-width:32ch;
+}
+.enter__btn{
+  -webkit-appearance:none;appearance:none;cursor:pointer;
+  font-family:"Sora",sans-serif;font-weight:700;
+  font-size:clamp(.95rem,2vw,1.15rem);letter-spacing:.06em;text-transform:uppercase;
+  line-height:1.25;text-align:center;
+  color:#12071F;background:#F5F0E6;
+  border:0;border-radius:100px;
+  padding:clamp(20px,3vw,26px) clamp(30px,5vw,54px);
+  min-height:64px;
+  box-shadow:0 0 0 0 rgba(167,139,250,.55);
+  transition:transform .22s cubic-bezier(.2,.8,.3,1),box-shadow .22s,background .22s;
+  position:relative;z-index:2;
+}
+.enter__btn span{display:block}
+.enter__btn:hover{transform:translateY(-3px) scale(1.015);background:#fff}
+.enter__btn:active{transform:translateY(0) scale(.985)}
+@media (prefers-reduced-motion:no-preference){
+  .enter__btn{animation:halo 2.6s ease-out infinite}
+}
+@keyframes halo{
+  0%{box-shadow:0 0 0 0 rgba(167,139,250,.5)}
+  70%{box-shadow:0 0 0 26px rgba(167,139,250,0)}
+  100%{box-shadow:0 0 0 0 rgba(167,139,250,0)}
+}
+.enter__hint{
+  margin:clamp(26px,4vw,38px) auto 0;
+  font-family:"Sora",sans-serif;font-size:12px;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,230,.6);
+}
+.enter__modes{
+  display:flex;flex-wrap:wrap;gap:10px;justify-content:center;
+  margin-top:clamp(28px,4vw,40px);
+}
+.enter__or{
+  font-family:"Sora",sans-serif;font-size:15px;line-height:1.55;font-weight:400;
+  color:rgba(245,240,230,.6);margin:clamp(30px,4.5vw,44px) auto 0;max-width:30ch;
+}
+.enter__mode{
+  -webkit-appearance:none;appearance:none;cursor:pointer;
+  font-family:"Sora",sans-serif;font-size:11px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;
+  padding:13px 20px;min-height:44px;border-radius:100px;
+  background:rgba(245,240,230,.06);
+  border:1px solid rgba(245,240,230,.28);color:rgba(245,240,230,.82);
+  transition:background .2s,border-color .2s,color .2s,transform .18s;
+}
+.enter__mode:hover{background:rgba(245,240,230,.16);border-color:rgba(245,240,230,.5);color:#fff;transform:translateY(-2px)}
+.enter__mode:active{transform:translateY(0)}
+
+/* ============================================================
+   PROTÓTIPO CONCEITUAL — modal de simulação
+   Sem backend, sem API, sem rede, sem persistência.
+   Prioridade mobile: no celular o app ocupa a tela inteira;
+   no desktop aparece dentro de uma moldura de smartphone.
+   ============================================================ */
+
+.sim{
+  padding:0;border:0;margin:0;
+  width:100%;max-width:100%;
+  height:100%;max-height:100%;
+  /* dvh acompanha a barra do navegador no celular; % fica como fallback */
+  height:100dvh;max-height:100dvh;
+  background:#0E0520;color:#F5F0E6;
+  font-family:"Sora",sans-serif;
+  overflow:hidden;
+}
+.sim::backdrop{background:rgba(8,3,18,.86);backdrop-filter:blur(6px)}
+.sim[open]{display:flex;flex-direction:column}
+
+.sim__bar{
+  flex:none;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:max(12px,env(safe-area-inset-top)) 14px 12px;
+  border-bottom:1px solid rgba(245,240,230,.10);
+  background:#0E0520;
+}
+.sim__sig{
+  font-size:9.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(245,240,230,.6);line-height:1.5;
+}
+.sim__sig b{display:block;color:rgba(167,139,250,.9);font-weight:600}
+.sim__exit{
+  -webkit-appearance:none;appearance:none;cursor:pointer;
+  display:flex;align-items:center;gap:8px;
+  font-family:"Sora",sans-serif;font-size:10px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:#F5F0E6;background:rgba(245,240,230,.08);
+  border:1px solid rgba(245,240,230,.16);border-radius:100px;
+  padding:10px 15px;min-height:44px;
+  transition:background .2s,border-color .2s;
+}
+.sim__exit:hover{background:rgba(245,240,230,.15);border-color:rgba(245,240,230,.3)}
+.sim__exit svg{width:13px;height:13px;flex:none}
+@media (max-width:560px){.sim__exit span{display:none}.sim__exit{padding:12px}}
+
+/* seletor de modo */
+.sim__modes{
+  flex:none;display:flex;gap:6px;padding:12px 14px;
+  overflow-x:auto;scrollbar-width:none;background:#0E0520;
+}
+.sim__modes::-webkit-scrollbar{display:none}
+.sim__mode{
+  -webkit-appearance:none;appearance:none;cursor:pointer;flex:none;
+  font-family:"Sora",sans-serif;font-size:10.5px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;
+  padding:11px 18px;min-height:44px;border-radius:100px;
+  background:transparent;color:rgba(245,240,230,.52);
+  border:1px solid rgba(245,240,230,.16);
+  transition:background .2s,color .2s,border-color .2s;
+}
+.sim__mode:hover{color:#F5F0E6;border-color:rgba(245,240,230,.34)}
+.sim__mode[aria-selected="true"]{background:#7C3AED;border-color:#7C3AED;color:#fff}
+
+/* palco */
+.sim__stage{
+  flex:1 1 auto;min-height:0;
+  display:flex;align-items:center;justify-content:center;
+  padding:0 14px;
+  overflow:hidden;
+}
+@media (min-width:900px){.sim__stage{padding:18px 14px}}
+
+/* barra de status falsa — declarada antes do media query que a mostra */
+.phone__status{
+  display:none;flex:none;align-items:center;justify-content:space-between;
+  padding:13px 26px 4px;font-size:11px;font-weight:600;
+  color:rgba(245,240,230,.75);font-variant-numeric:tabular-nums;
+}
+
+/* moldura de smartphone — só no desktop */
+.phone{
+  width:100%;max-width:420px;height:100%;
+  display:flex;flex-direction:column;overflow:hidden;
+  background:#14082A;
+}
+@media (min-width:900px){
+  .phone{
+    max-width:392px;height:min(780px,100%);
+    border-radius:44px;border:11px solid #1A1A22;
+    box-shadow:0 40px 90px -20px rgba(0,0,0,.8),0 0 0 1px rgba(245,240,230,.08);
+    position:relative;
+  }
+  .phone::before{
+    content:"";position:absolute;top:9px;left:50%;transform:translateX(-50%);
+    width:104px;height:26px;border-radius:100px;background:#1A1A22;z-index:5;
+  }
+  .phone__status{display:flex}
+}
+.phone__status i{font-style:normal;letter-spacing:.04em}
+
+/* tela do app */
+.screen{
+  flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;
+  padding:clamp(18px,4vw,26px) clamp(18px,4.5vw,24px) 20px;
+  display:flex;flex-direction:column;gap:16px;
+  transition:opacity .18s ease,transform .18s ease;
+}
+.screen.sw{opacity:0;transform:translateY(10px)}
+@media (prefers-reduced-motion:reduce){.screen{transition:none}.screen.sw{opacity:1;transform:none}}
+
+/* barra inferior de controlo */
+.sim__ctl{
+  flex:none;display:flex;align-items:center;gap:12px;
+  padding:12px 14px max(14px,env(safe-area-inset-bottom));
+  border-top:1px solid rgba(245,240,230,.10);background:#0E0520;
+}
+@media (min-width:900px){
+  .sim__ctl{width:100%;max-width:560px;margin:0 auto;border-top:0}
+}
+.sim__back,.sim__restart{
+  -webkit-appearance:none;appearance:none;cursor:pointer;flex:none;
+  width:48px;height:48px;border-radius:50%;
+  background:rgba(245,240,230,.07);border:1px solid rgba(245,240,230,.16);
+  color:#F5F0E6;display:grid;place-items:center;
+  transition:background .2s,opacity .2s;
+}
+.sim__back:hover,.sim__restart:hover{background:rgba(245,240,230,.14)}
+.sim__back:disabled,.sim__restart:disabled{opacity:.28;cursor:default}
+.sim__back svg,.sim__restart svg{width:16px;height:16px}
+.sim__next{
+  -webkit-appearance:none;appearance:none;cursor:pointer;flex:1 1 auto;
+  font-family:"Sora",sans-serif;font-size:13px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:#fff;background:#7C3AED;border:0;border-radius:100px;
+  padding:16px 22px;min-height:52px;
+  transition:background .2s,transform .18s;
+}
+.sim__next:hover{background:#8B5CF6;transform:translateY(-1px)}
+.sim__next:active{transform:translateY(0)}
+.sim__next--done{background:var(--ok,#22C55E);color:#06210F}
+.sim__dots{flex:none;display:flex;gap:4px;align-items:center}
+.sim__dots i{display:block;width:5px;height:5px;border-radius:50%;background:rgba(245,240,230,.22);transition:background .25s,transform .25s}
+.sim__dots i.on{background:#A78BFA;transform:scale(1.35)}
+@media (max-width:520px){.sim__dots{display:none}}
+
+/* ---------- componentes das telas ---------- */
+.s-kick{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#A78BFA;margin:0}
+.s-h{font-family:"Sora",sans-serif;font-weight:700;font-size:clamp(1.4rem,5.4vw,1.75rem);line-height:1.12;letter-spacing:-.035em;margin:0;color:#F5F0E6}
+.s-p{font-size:14px;line-height:1.55;color:rgba(245,240,230,.68);margin:0;max-width:none}
+.s-spacer{flex:1 1 auto;min-height:8px}
+
+.s-field{
+  display:flex;align-items:center;gap:12px;
+  background:rgba(245,240,230,.07);border:1px solid rgba(245,240,230,.13);
+  border-radius:14px;padding:16px 18px;
+}
+.s-field svg{width:18px;height:18px;flex:none;color:#A78BFA}
+.s-field span{font-size:14.5px;color:rgba(245,240,230,.62)}
+
+.s-route{display:grid;gap:0;background:rgba(245,240,230,.05);border:1px solid rgba(245,240,230,.12);border-radius:14px;padding:6px 0}
+.s-stop{display:flex;align-items:center;gap:14px;padding:14px 18px;position:relative}
+.s-stop b{width:11px;height:11px;border-radius:50%;flex:none;background:#A78BFA}
+.s-stop--end b{background:#22C55E;border-radius:2px}
+.s-stop::after{content:"";position:absolute;left:23px;top:34px;width:1px;height:16px;background:rgba(245,240,230,.2)}
+.s-stop--end::after{display:none}
+.s-stop div{display:grid;gap:2px;min-width:0}
+.s-stop em{font-style:normal;font-size:9.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,240,230,.62)}
+.s-stop strong{font-size:14.5px;font-weight:500;color:#F5F0E6}
+
+.s-price{
+  background:linear-gradient(135deg,#2B1150,#5B21B6);border-radius:18px;
+  padding:24px;display:grid;gap:6px;text-align:center;
+}
+.s-price b{font-family:"Sora",sans-serif;font-weight:800;font-size:clamp(2.2rem,9vw,2.9rem);letter-spacing:-.045em;line-height:1;font-variant-numeric:tabular-nums}
+.s-price em{font-style:normal;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,230,.75)}
+
+.s-driver{display:flex;align-items:center;gap:15px;background:rgba(245,240,230,.06);border:1px solid rgba(245,240,230,.12);border-radius:16px;padding:18px}
+.s-driver__av{width:62px;height:62px;border-radius:50%;flex:none}
+.s-driver__i{display:grid;gap:3px;min-width:0}
+.s-driver__n{font-family:"Sora",sans-serif;font-weight:600;font-size:16px;margin:0;letter-spacing:-.01em}
+.s-driver__m{font-size:13px;color:rgba(245,240,230,.7);margin:0}
+.s-driver__r{display:flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;color:#FBBF24}
+.s-driver__r svg{width:13px;height:13px}
+.s-plate{
+  font-family:"Sora",sans-serif;font-weight:700;font-size:13px;letter-spacing:.14em;
+  background:#F5F0E6;color:#1C1526;border-radius:5px;padding:5px 10px;
+  display:inline-block;justify-self:start;font-variant-numeric:tabular-nums;
+}
+
+.s-seals{display:grid;gap:9px}
+.s-seal{
+  display:flex;align-items:center;gap:11px;
+  background:rgba(34,197,94,.10);border:1px solid rgba(34,197,94,.3);
+  border-radius:12px;padding:14px 16px;
+}
+.s-seal b{width:20px;height:20px;border-radius:50%;flex:none;background:#22C55E;color:#06210F;display:grid;place-items:center;font-size:12px;font-weight:800}
+.s-seal span{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#F5F0E6}
+.s-seal--wait{background:rgba(245,240,230,.05);border-color:rgba(245,240,230,.14)}
+.s-seal--wait b{background:rgba(245,240,230,.16);color:rgba(245,240,230,.5)}
+.s-seal--wait span{color:rgba(245,240,230,.5)}
+
+.s-pin{background:rgba(245,240,230,.06);border:1px solid rgba(245,240,230,.14);border-radius:18px;padding:26px 20px;text-align:center;display:grid;gap:14px}
+.s-pin__d{display:flex;gap:10px;justify-content:center}
+.s-pin__d i{
+  width:clamp(46px,14vw,58px);height:clamp(58px,17vw,70px);border-radius:12px;
+  background:#F5F0E6;color:#1C1526;
+  display:grid;place-items:center;font-style:normal;
+  font-family:"Sora",sans-serif;font-weight:800;font-size:clamp(1.6rem,6vw,2rem);
+  font-variant-numeric:tabular-nums;
+}
+.s-pin em{font-style:normal;font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,240,230,.68);line-height:1.6}
+
+/* mapa conceitual */
+.s-map{
+  border-radius:18px;overflow:hidden;border:1px solid rgba(245,240,230,.12);
+  background:#1B0D33;position:relative;flex:none;
+}
+.s-map svg{display:block;width:100%;height:auto}
+.s-map__road{fill:none;stroke:rgba(245,240,230,.10);stroke-width:7;stroke-linecap:round}
+.s-map__path{fill:none;stroke:#A78BFA;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+@media (prefers-reduced-motion:no-preference){
+  .s-map__path{stroke-dasharray:420;stroke-dashoffset:420;animation:draw 2.4s cubic-bezier(.4,0,.2,1) forwards}
+}
+@keyframes draw{to{stroke-dashoffset:0}}
+.s-map__car{fill:#F5F0E6}
+@media (prefers-reduced-motion:no-preference){
+  .s-map__car{animation:carpop .5s cubic-bezier(.2,.9,.3,1.2) 1.5s both}
+}
+@keyframes carpop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
+.s-map__pin{fill:#22C55E}
+.s-map__org{fill:#A78BFA}
+.s-map__lbl{fill:rgba(245,240,230,.5);font-family:"Sora",sans-serif;font-size:9px;font-weight:600;letter-spacing:.12em}
+
+.s-eta{display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(245,240,230,.06);border:1px solid rgba(245,240,230,.12);border-radius:14px;padding:15px 18px}
+.s-eta div{display:grid;gap:2px}
+.s-eta em{font-style:normal;font-size:9.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,240,230,.62)}
+.s-eta strong{font-family:"Sora",sans-serif;font-weight:700;font-size:17px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+
+/* botões de segurança */
+.s-safe{display:grid;gap:9px}
+.s-safebtn{
+  -webkit-appearance:none;appearance:none;cursor:pointer;width:100%;
+  display:flex;align-items:center;gap:13px;text-align:left;
+  font-family:"Sora",sans-serif;font-size:14px;font-weight:600;color:#F5F0E6;
+  background:rgba(245,240,230,.06);border:1px solid rgba(245,240,230,.14);
+  border-radius:14px;padding:16px 18px;min-height:56px;
+  transition:background .2s,border-color .2s;
+}
+.s-safebtn:hover{background:rgba(245,240,230,.12)}
+.s-safebtn svg{width:19px;height:19px;flex:none;color:#A78BFA}
+.s-safebtn--sos{background:rgba(239,68,68,.12);border-color:rgba(239,68,68,.38);color:#FCA5A5}
+.s-safebtn--sos svg{color:#EF4444}
+.s-safebtn small{display:block;font-size:10.5px;font-weight:500;letter-spacing:.04em;color:rgba(245,240,230,.62);margin-top:2px}
+.s-toast{
+  font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:#A78BFA;background:rgba(124,58,237,.14);border:1px dashed rgba(167,139,250,.4);
+  border-radius:10px;padding:11px 14px;text-align:center;
+}
+
+/* pagamento */
+.s-pays{display:grid;gap:9px}
+.s-pay{
+  -webkit-appearance:none;appearance:none;cursor:pointer;width:100%;
+  display:flex;align-items:center;gap:13px;text-align:left;
+  font-family:"Sora",sans-serif;font-size:14px;font-weight:500;color:#F5F0E6;
+  background:rgba(245,240,230,.06);border:1px solid rgba(245,240,230,.14);
+  border-radius:14px;padding:15px 17px;min-height:56px;
+  transition:background .2s,border-color .2s;
+}
+.s-pay:hover{border-color:rgba(167,139,250,.5)}
+.s-pay[aria-pressed="true"]{background:rgba(124,58,237,.18);border-color:#7C3AED}
+.s-pay__ico{width:38px;height:26px;border-radius:5px;flex:none;display:grid;place-items:center;background:rgba(245,240,230,.1)}
+.s-pay__ico svg{width:17px;height:17px;color:#A78BFA}
+.s-pay strong{display:block;font-weight:600}
+.s-pay small{display:block;font-size:11px;color:rgba(245,240,230,.62);margin-top:1px}
+.s-pay__tick{margin-left:auto;width:20px;height:20px;border-radius:50%;border:1px solid rgba(245,240,230,.25);flex:none;display:grid;place-items:center;font-size:11px;color:transparent}
+.s-pay[aria-pressed="true"] .s-pay__tick{background:#7C3AED;border-color:#7C3AED;color:#fff}
+
+/* estado de sucesso */
+.s-ok{display:grid;gap:18px;justify-items:center;text-align:center;padding:16px 0}
+.s-ok__c{
+  width:88px;height:88px;border-radius:50%;background:rgba(34,197,94,.14);
+  border:2px solid #22C55E;display:grid;place-items:center;color:#22C55E;
+}
+.s-ok__c svg{width:38px;height:38px}
+@media (prefers-reduced-motion:no-preference){
+  .s-ok__c{animation:okpop .45s cubic-bezier(.2,.9,.3,1.3) both}
+}
+@keyframes okpop{from{transform:scale(.6);opacity:0}to{transform:scale(1);opacity:1}}
+
+/* avaliação */
+.s-stars{display:flex;gap:8px;justify-content:center}
+.s-star{
+  -webkit-appearance:none;appearance:none;cursor:pointer;background:none;border:0;padding:6px;
+  color:rgba(245,240,230,.24);transition:color .18s,transform .18s;
+}
+.s-star svg{width:32px;height:32px;display:block}
+.s-star:hover{transform:scale(1.15)}
+.s-star.on{color:#FBBF24}
+
+/* ---------- modo motorista ---------- */
+.s-status{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  background:rgba(34,197,94,.10);border:1px solid rgba(34,197,94,.32);
+  border-radius:14px;padding:15px 18px;
+}
+.s-status__l{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#22C55E}
+.s-status__l b{width:9px;height:9px;border-radius:50%;background:#22C55E;flex:none}
+@media (prefers-reduced-motion:no-preference){.s-status__l b{animation:blip 1.8s ease-in-out infinite}}
+@keyframes blip{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(34,197,94,.5)}50%{opacity:.75;box-shadow:0 0 0 7px rgba(34,197,94,0)}}
+.s-status__v{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,240,230,.68)}
+
+.s-hail{
+  background:linear-gradient(135deg,#2B1150,#4C1D95);border:1px solid rgba(167,139,250,.4);
+  border-radius:18px;padding:20px;display:grid;gap:14px;
+}
+.s-hail__top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.s-hail__tag{font-size:9.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#A78BFA}
+.s-hail__timer{
+  font-family:"Sora",sans-serif;font-weight:800;font-size:15px;color:#F5F0E6;
+  font-variant-numeric:tabular-nums;background:rgba(245,240,230,.12);
+  border-radius:100px;padding:5px 12px;
+}
+.s-hail__val{font-family:"Sora",sans-serif;font-weight:800;font-size:clamp(1.8rem,7vw,2.3rem);letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums;margin:0}
+
+.s-wallet{
+  background:linear-gradient(135deg,#2B1150,#5B21B6);border-radius:20px;
+  padding:26px 22px;display:grid;gap:18px;
+}
+.s-wallet__row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.s-wallet__k{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,230,.72)}
+.s-wallet__gain{font-family:"Sora",sans-serif;font-weight:800;font-size:clamp(2rem,8vw,2.6rem);letter-spacing:-.045em;line-height:1;color:#22C55E;font-variant-numeric:tabular-nums;margin:0}
+.s-wallet__bal{font-family:"Sora",sans-serif;font-weight:700;font-size:clamp(1.5rem,6vw,1.9rem);letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums;margin:0}
+.s-wallet__hr{height:1px;background:rgba(245,240,230,.18)}
+.s-wallet__sm{font-family:"Sora",sans-serif;font-weight:600;font-size:13px;color:#F5F0E6;font-variant-numeric:tabular-nums}
+
+.s-quote{
+  font-family:"Sora",sans-serif;font-weight:700;
+  font-size:clamp(1.2rem,4.6vw,1.5rem);line-height:1.15;letter-spacing:-.03em;
+  margin:0;color:#F5F0E6;
+}
+.s-quote em{font-style:normal;color:#A78BFA;display:block}
+
+/* ---------- modo central ---------- */
+.ops{
+  width:100%;max-width:1100px;height:100%;overflow-y:auto;overscroll-behavior:contain;
+  background:#1A1A22;border:1px solid rgba(245,240,230,.12);border-radius:16px;
+  padding:clamp(16px,2.4vw,26px);gap:clamp(14px,2vw,20px);
+  display:flex;flex-direction:column;
+  transition:opacity .18s ease,transform .18s ease;
+}
+/* grid comprimiria as linhas quando o conteúdo excede a altura do palco */
+.ops>*{flex:0 0 auto}
+.ops.sw{opacity:0;transform:translateY(10px)}
+@media (prefers-reduced-motion:reduce){.ops{transition:none}.ops.sw{opacity:1;transform:none}}
+.ops__head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.ops__t{font-family:"Sora",sans-serif;font-weight:700;font-size:clamp(1.1rem,2.6vw,1.4rem);letter-spacing:-.03em;margin:0}
+.ops__live{display:flex;align-items:center;gap:8px;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#22C55E}
+.ops__live b{width:8px;height:8px;border-radius:50%;background:#22C55E}
+@media (prefers-reduced-motion:no-preference){.ops__live b{animation:blip 1.8s ease-in-out infinite}}
+
+.ops__kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(245,240,230,.12);border:1px solid rgba(245,240,230,.12);border-radius:12px;overflow:hidden}
+@media (min-width:720px){.ops__kpis{grid-template-columns:repeat(4,1fr)}}
+.kpi{background:#22222A;padding:clamp(14px,2vw,20px);display:grid;gap:6px}
+.kpi b{font-family:"Sora",sans-serif;font-weight:800;font-size:clamp(1.7rem,5vw,2.4rem);letter-spacing:-.045em;line-height:1;font-variant-numeric:tabular-nums}
+.kpi span{font-size:9.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,240,230,.66);line-height:1.5}
+.kpi--ok b{color:#22C55E}
+.kpi--vi b{color:#A78BFA}
+
+.ops__grid{display:grid;gap:clamp(14px,2vw,18px);grid-template-columns:1fr}
+@media (min-width:860px){.ops__grid{grid-template-columns:1.35fr .85fr}}
+
+.ops__map{background:#14141A;border:1px solid rgba(245,240,230,.1);border-radius:12px;overflow:hidden;position:relative}
+.ops__map svg{display:block;width:100%;height:auto}
+.ops__maproad{fill:none;stroke:rgba(245,240,230,.07);stroke-width:6;stroke-linecap:round}
+.ops__unit{fill:#A78BFA}
+.ops__unit--free{fill:rgba(245,240,230,.34)}
+.ops__maplbl{fill:rgba(245,240,230,.34);font-family:"Sora",sans-serif;font-size:8.5px;font-weight:600;letter-spacing:.1em}
+
+.ops__side{display:grid;gap:clamp(12px,1.6vw,16px);align-content:start}
+.opsbox{background:#22222A;border:1px solid rgba(245,240,230,.1);border-radius:12px;padding:16px;display:grid;gap:11px;align-content:start}
+.opsbox__t{font-size:9.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,240,230,.62);margin:0}
+.opsrow{display:flex;align-items:center;gap:10px;font-size:12.5px;color:rgba(245,240,230,.8)}
+.opsrow b{width:7px;height:7px;border-radius:50%;flex:none}
+.opsrow span{margin-left:auto;font-size:11px;color:rgba(245,240,230,.62);font-variant-numeric:tabular-nums;white-space:nowrap}
+.opsrow--ok b{background:#22C55E}
+.opsrow--vi b{background:#A78BFA}
+.opsrow--nu b{background:rgba(245,240,230,.3)}
+
+.ops__tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (min-width:680px){.ops__tiles{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1000px){.ops__tiles{grid-template-columns:repeat(6,1fr)}}
+.tile{background:#22222A;border:1px solid rgba(245,240,230,.1);border-radius:12px;padding:15px 13px;display:grid;gap:9px;align-content:start;text-align:left}
+.tile svg{width:19px;height:19px;color:#A78BFA}
+.tile b{font-size:11.5px;font-weight:600;letter-spacing:.04em;color:#F5F0E6}
+.tile span{font-size:10px;color:rgba(245,240,230,.62);line-height:1.45}
+.tile--alert svg{color:#22C55E}
+
+.ops__quote{
+  font-family:"Sora",sans-serif;font-weight:700;
+  font-size:clamp(1.1rem,3vw,1.6rem);line-height:1.15;letter-spacing:-.035em;
+  margin:0;padding-top:4px;
+}
+.ops__quote em{font-style:normal;color:#A78BFA}
+
+/* aviso de protótipo */
+.sim__disc{
+  flex:none;padding:0 14px 10px;text-align:center;
+  font-size:9px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(245,240,230,.55);background:#0E0520;
+}
+</style>
+</head>
+<body>
+
+<!-- ================================================================
+     ATO 1 — SAMBA
+     Identidade da agência, sem alteração. Componentes do site oficial.
+     ================================================================ -->
+<header class="hero">
+  <div class="hero__in">
+
+    <div class="mark rise">
+      <img class="logo" src="../assets/samba-simbolo-on-light.png" alt="Símbolo da SAMBA" width="360" height="239">
+      <span class="mark__tag">Agência de Marketing Digital<br>Growth · Performance · Tecnologia</span>
+    </div>
+
+    <img class="wordmark rise rise-2" src="../assets/samba-wordmark-on-light.png" alt="SAMBA" fetchpriority="high" decoding="async" width="1200" height="343">
+    <span class="wordmark__sub rise rise-2">Creative Strategic Agency</span>
+
+    <h1 class="big hero__title rise rise-3">
+      <span>Antes de construir</span>
+      <span>uma tecnologia,</span>
+      <span>é preciso enxergar</span>
+      <span><em>o negócio.</em></span>
+    </h1>
+
+    <div class="hero__grid rise rise-4">
+      <div>
+        <p class="sig">A SAMBA transforma uma ideia em visão, a visão em marca e a marca em uma experiência que as pessoas desejam fazer parte.</p>
+        <p class="sig--en">Vision first. Brand second. Product follows.</p>
+        <div class="chips">
+          <span class="chip chip--v">Estratégia</span>
+          <span class="chip chip--a">Branding</span>
+          <span class="chip chip--z">Product Concept</span>
+          <span class="chip chip--n">Growth</span>
+        </div>
+      </div>
+      <div class="stack">
+        <div class="beat beat--color beat--live" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <p class="dim">
+          Esta é uma apresentação conceitual. Nada aqui foi construído — tudo aqui
+          poderia ser construído. O que você vai ver é a empresa que existe antes
+          da tecnologia existir.
+        </p>
+        <p class="note">Apresentação conceitual · Mobilidade · Angola<br>Setembro 2026 · Confidencial</p>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<div class="ruler" aria-hidden="true">
+  <span style="background:#024528;width:34%"></span>
+  <span style="background:#FDC40B;width:14%"></span>
+  <span style="background:#0B8B47;width:22%"></span>
+  <span style="background:#FDC40B;width:9%"></span>
+  <span style="background:#1B3CE8;width:21%"></span>
+</div>
+
+<!-- ============================ COMO PENSAMOS ============================ -->
+<section class="band band--ink">
+  <div class="band__in split">
+    <div>
+      <p class="eyebrow">Ato 1 · 01 — Como pensamos</p>
+      <div class="beat beat--live" aria-hidden="true" style="color:#0B8B47"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div class="stack">
+      <h2 class="big">A SAMBA não começa programando. Começa entendendo o que <span style="color:#FDC40B">precisa existir.</span></h2>
+      <p class="lede" style="max-width:52ch">
+        Tecnologia é consequência. Antes dela vem a pergunta que decide tudo:
+        que empresa é essa, para quem, com qual promessa e por que alguém a escolheria.
+      </p>
+      <p class="dim">
+        Quando um negócio nasce pelo software, ele nasce sem posicionamento — e depois
+        gasta anos tentando descobrir o que é. Quando nasce pela estratégia, o software
+        já sabe o que precisa fazer no primeiro dia.
+      </p>
+      <p class="dim">
+        É por isso que a SAMBA não se apresenta como software house. Somos a camada que
+        vem antes: estratégia, marca, conceito de produto, experiência e crescimento.
+        A tecnologia entra como parte da estratégia — nunca como o ponto de partida.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ AS CAMADAS ============================ -->
+<section class="band band--sea">
+  <div class="band__in">
+    <p class="eyebrow">Ato 1 · 02 — Como arquitetamos negócios</p>
+    <h2 class="big" style="max-width:15ch">Cinco camadas entre uma ideia e uma empresa.</h2>
+
+    <div class="pillars">
+      <div class="pillar">
+        <span class="pillar__k">01</span>
+        <h3 class="pillar__t">Estratégia</h3>
+        <p>Que negócio é esse, onde joga, contra quem e com qual promessa. A decisão antes do desenho.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar__k">02</span>
+        <h3 class="pillar__t">Marca</h3>
+        <p>Nome, símbolo, território visual e tom. O que faz a empresa ser reconhecida e desejada.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar__k">03</span>
+        <h3 class="pillar__t">Produto</h3>
+        <p>Conceito de produto, jornada e UX/UI. Como a promessa vira algo que a pessoa usa.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar__k">04</span>
+        <h3 class="pillar__t">Experiência</h3>
+        <p>O que acontece na rua, no carro, no atendimento, no cartão. A marca fora da tela.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar__k">05</span>
+        <h3 class="pillar__t">Growth</h3>
+        <p>Campanha, lançamento, aquisição e crescimento. O negócio encontrando o mercado.</p>
+      </div>
+    </div>
+
+    <div class="equation">
+      <span>Ideia</span><span class="op">→</span>
+      <span>Visão</span><span class="op">→</span>
+      <span>Marca</span><span class="op">→</span>
+      <span>Experiência</span><span class="op">→</span>
+      <span class="out">Negócio</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ A PONTE ============================ -->
+<section class="band band--leaf">
+  <div class="band__in">
+    <p class="eyebrow">Ato 1 · 03 — O exercício</p>
+    <h2 class="huge huge--md">
+      <span style="display:block">É isso que</span>
+      <span style="display:block">poderíamos criar</span>
+      <span style="display:block;color:#FDC40B">para Angola.</span>
+    </h2>
+
+    <div class="split" style="margin-top:clamp(40px,6vw,68px)">
+      <p class="sig" style="max-width:18ch">Aplicamos o método a um caso real de mercado.</p>
+      <div class="stack">
+        <p class="dim">
+          A partir daqui, a SAMBA sai de cena e dá lugar a uma nova empresa de mobilidade
+          que está sendo concebida para Angola. Outra marca, outro universo visual,
+          outra linguagem.
+        </p>
+        <p class="dim">
+          Nada do que vem a seguir foi desenvolvido. É uma visão de como uma nova empresa
+          de mobilidade poderia nascer em Angola: o que ela poderia ser, como ela se pareceria, como as pessoas a usariam e por que
+          ela seria escolhida. Um conceito completo, construído para ser enxergado antes
+          de ser construído.
+        </p>
+        <p class="note">
+          As telas, valores, nomes e dados apresentados no próximo ato são ilustrativos e
+          existem apenas para demonstrar a visão de produto.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- transição visual: a régua SAMBA vira a régua da marca nova -->
+<div class="shift" aria-hidden="true">
+  <span style="background:#024528"></span>
+  <span style="background:#0B8B47"></span>
+  <span style="background:#1B3CE8"></span>
+  <span style="background:#4128C9"></span>
+  <span style="background:#5B21B6"></span>
+  <span style="background:#7C3AED"></span>
+  <span style="background:#14082A"></span>
+</div>
+
+<!-- ================================================================
+     ATO 2 — CONCEITO DA FUTURA EMPRESA DE MOBILIDADE
+     Universo visual próprio. Marca sem nome definitivo.
+     ================================================================ -->
+<main class="act2" id="ato2">
+
+<!-- ------------------------ CENA DE PASSAGEM ------------------------ -->
+<section class="era">
+  <div class="era__in">
+    <span class="era__rule" aria-hidden="true"></span>
+    <p class="era__k">A partir daqui, outro universo</p>
+
+    <svg class="glyph glyph--live" viewBox="0 0 100 100" style="width:clamp(58px,9vw,86px);color:#C4B5FD" role="img" aria-label="Símbolo conceitual da futura marca">
+      <path class="g-shield" d="M50 7 L88 30 L88 62 Q88 82 50 95 Q12 82 12 62 L12 30 Z"/>
+      <path class="g-route" d="M32 64 Q32 44 50 44 Q68 44 68 30"/>
+      <circle class="g-dot" cx="32" cy="64" r="6"/>
+    </svg>
+
+    <h2 class="era__t">
+      <span>Uma</span>
+      <span>nova era.</span>
+    </h2>
+
+    <p class="era__p">
+      A SAMBA sai de cena. Entra uma nova empresa de mobilidade,
+      concebida para Angola — outra marca, outra linguagem, outro padrão de confiança.
+    </p>
+
+    <span class="era__rule" aria-hidden="true" style="transform:rotate(180deg)"></span>
+  </div>
+</section>
+
+<!-- ---------------------------- ABERTURA ---------------------------- -->
+<section class="band band--deep" style="padding-top:clamp(80px,14vw,170px);padding-bottom:clamp(80px,14vw,170px)">
+  <div class="band__in">
+    <p class="eyebrow">Ato 2 · Conceito de empresa</p>
+
+    <div class="brandlock" style="margin-bottom:clamp(44px,7vw,80px)">
+      <svg class="glyph glyph--live" viewBox="0 0 100 100" style="width:clamp(74px,12vw,116px);color:#A78BFA" role="img" aria-label="Símbolo conceitual provisório">
+        <path class="g-shield" d="M50 7 L88 30 L88 62 Q88 82 50 95 Q12 82 12 62 L12 30 Z"/>
+        <path class="g-route" d="M32 64 Q32 44 50 44 Q68 44 68 30"/>
+        <circle class="g-dot" cx="32" cy="64" r="6"/>
+      </svg>
+      <div class="brandlock__row">
+        <span class="brandlock__name">Nova Marca</span>
+        <span class="placeholder">Identidade conceitual · sem nome definido</span>
+      </div>
+      <span class="brandlock__tag">Mobilidade · Segurança · Pagamentos · Angola</span>
+    </div>
+
+    <h2 class="huge" style="max-width:16ch">Uma nova empresa de mobilidade, concebida para Angola.</h2>
+
+    <div class="split" style="margin-top:clamp(44px,6vw,72px)">
+      <p class="sig" style="max-width:20ch;color:#A78BFA">Nesta etapa, a marca não tem nome — e isso é proposital.</p>
+      <div class="stack">
+        <p class="dim">
+          Nome é decisão de dono, não de agência. O que a SAMBA apresenta aqui é o
+          território: como essa empresa se comportaria, o que ela prometeria, como
+          ela seria reconhecida na rua e por que alguém confiaria nela.
+        </p>
+        <p class="dim">
+          O símbolo acima é um marcador provisório — um escudo com uma rota dentro.
+          Proteção e movimento na mesma forma. Ele existe para sustentar o conceito
+          visualmente, não para ser a marca final.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------------------------- A OPORTUNIDADE ---------------------------- -->
+<section class="band band--ivory">
+  <div class="band__in">
+    <p class="eyebrow" style="color:rgba(28,21,38,.72)">Ato 2 · 01 — Por que agora</p>
+    <h2 class="big" style="max-width:15ch">
+      <span class="lineblk">Em Angola, a mobilidade já existe.</span>
+      <span class="lineblk">A oportunidade é elevar o padrão de confiança.</span>
+    </h2>
+
+    <div class="cards cards--3">
+      <article class="card" style="background:#fff;border-color:rgba(28,21,38,.12)">
+        <span class="card__k" style="color:#7C3AED">Passageiro</span>
+        <h3 class="card__t" style="color:#1C1526">Segurança não pode ser apenas uma função.</h3>
+        <p style="color:rgba(28,21,38,.72)">GPS, identificação e recursos de emergência já existem no mercado.</p>
+        <p style="color:rgba(28,21,38,.72)">Nossa proposta é transformar segurança em uma experiência completa — antes, durante e depois de cada viagem.</p>
+      </article>
+      <article class="card" style="background:#fff;border-color:rgba(28,21,38,.12)">
+        <span class="card__k" style="color:#7C3AED">Motorista</span>
+        <h3 class="card__t" style="color:#1C1526">Confiança também precisa existir do outro lado.</h3>
+        <p style="color:rgba(28,21,38,.72)">O motorista não precisa apenas de corridas.</p>
+        <p style="color:rgba(28,21,38,.72)">Precisa enxergar com clareza ganhos, registros, pagamentos, suporte e sua relação com a plataforma.</p>
+      </article>
+      <article class="card" style="background:#fff;border-color:rgba(28,21,38,.12)">
+        <span class="card__k" style="color:#7C3AED">Operação</span>
+        <h3 class="card__t" style="color:#1C1526">Segurança precisa ser administrável.</h3>
+        <p style="color:rgba(28,21,38,.72)">Começar com 10 carros permite criar desde o primeiro dia uma operação acompanhada, com padrões claros, dados, histórico e resposta a ocorrências.</p>
+      </article>
+    </div>
+
+    <p class="sig" style="margin-top:clamp(48px,6.5vw,80px);max-width:20ch;color:#1C1526">
+      Não queremos inventar a mobilidade.
+    </p>
+    <p class="sig" style="margin-top:clamp(14px,2vw,22px);max-width:20ch;color:#5B21B6">
+      Queremos redefinir a confiança dentro dela.
+    </p>
+
+    <p class="note" style="margin-top:clamp(26px,3.5vw,38px);color:rgba(28,21,38,.72);max-width:64ch">
+      Leitura estratégica da SAMBA para fins de apresentação conceitual. Não constitui estudo de
+      mercado auditado nem avaliação de operadores em atividade.
+    </p>
+  </div>
+</section>
+
+<!-- ---------------------------- A IDEIA CENTRAL ---------------------------- -->
+<section class="band band--violet">
+  <div class="band__in">
+    <p class="eyebrow" style="color:rgba(245,240,230,.75)">Ato 2 · 02 — A ideia central</p>
+    <h2 class="huge huge--md" style="max-width:13ch">Segurança não é um recurso. É o produto.</h2>
+
+    <div class="split" style="margin-top:clamp(40px,6vw,64px)">
+      <p class="sig" style="max-width:19ch">Todo o resto se organiza em volta disso.</p>
+      <div class="stack">
+        <p style="color:rgba(245,240,230,.82)">
+          A proposta é tratar segurança como a espinha da experiência: a verificação,
+          o código de embarque, o acompanhamento e o pagamento registrado deixam de ser
+          itens de uma lista e passam a ser a razão de a empresa existir.
+        </p>
+        <p style="color:rgba(245,240,230,.82)">
+          Isso muda tudo a jusante: muda a marca, muda a cor dos carros, muda o
+          que o motorista veste, muda o que a campanha diz e muda o preço que o
+          mercado aceita pagar.
+        </p>
+      </div>
+    </div>
+
+    <h3 class="mid" style="margin-top:clamp(46px,6vw,74px)">Cinco camadas de confiança</h3>
+    <div class="cards cards--3" style="margin-top:clamp(18px,2.4vw,26px)">
+      <article class="card" style="background:rgba(245,240,230,.10);border-color:rgba(245,240,230,.2)">
+        <span class="card__k" style="color:#F5F0E6">Camada 01</span>
+        <h3 class="card__t">Segurança física</h3>
+        <p style="color:rgba(245,240,230,.78)">Quem dirige, qual carro, qual placa e quem está acompanhando. A viagem começa identificada.</p>
+      </article>
+      <article class="card" style="background:rgba(245,240,230,.10);border-color:rgba(245,240,230,.2)">
+        <span class="card__k" style="color:#F5F0E6">Camada 02</span>
+        <h3 class="card__t">Segurança operacional</h3>
+        <p style="color:rgba(245,240,230,.78)">Documentos válidos, frota acompanhada e uma central capaz de responder no momento em que algo muda.</p>
+      </article>
+      <article class="card" style="background:rgba(245,240,230,.10);border-color:rgba(245,240,230,.2)">
+        <span class="card__k" style="color:#F5F0E6">Camada 03</span>
+        <h3 class="card__t">Segurança financeira</h3>
+        <p style="color:rgba(245,240,230,.78)">Valor combinado antes, registro depois e menos dinheiro em espécie circulando dentro do carro.</p>
+      </article>
+      <article class="card" style="background:rgba(245,240,230,.10);border-color:rgba(245,240,230,.2)">
+        <span class="card__k" style="color:#F5F0E6">Camada 04</span>
+        <h3 class="card__t">Experiência</h3>
+        <p style="color:rgba(245,240,230,.78)">O cuidado que se percebe sem ser explicado: o carro limpo, o tom certo, a tela simples, o fim sem atrito.</p>
+      </article>
+      <article class="card" style="background:rgba(245,240,230,.10);border-color:rgba(245,240,230,.2)">
+        <span class="card__k" style="color:#F5F0E6">Camada 05</span>
+        <h3 class="card__t">Pertencimento</h3>
+        <p style="color:rgba(245,240,230,.78)">Uma marca angolana que o motorista tem orgulho de vestir e o passageiro reconhece como sua.</p>
+      </article>
+      <article class="card" style="background:#F5F0E6;border-color:#F5F0E6">
+        <span class="card__k" style="color:#5B21B6">O conjunto</span>
+        <h3 class="card__t" style="color:#1C1526">Nenhuma isolada resolve</h3>
+        <p style="color:rgba(28,21,38,.72)">É a soma das cinco que muda o padrão. Uma camada sozinha é recurso; as cinco juntas são posicionamento.</p>
+      </article>
+    </div>
+
+    <h3 class="mid" style="margin-top:clamp(46px,6vw,74px)">Como isso apareceria no produto</h3>
+    <div class="cards cards--4" style="margin-top:clamp(18px,2.4vw,26px)">
+      <article class="card" style="background:rgba(245,240,230,.10);border-color:rgba(245,240,230,.2)">
+        <span class="card__k" style="color:#F5F0E6">01</span>
+        <h3 class="card__t">Verificação</h3>
+        <p style="color:rgba(245,240,230,.86)">Motorista e veículo com identidade conferida antes de rodar.</p>
+      </article>
+      <article class="card" style="background:rgba(245,240,230,.10);border-color:rgba(245,240,230,.2)">
+        <span class="card__k" style="color:#F5F0E6">02</span>
+        <h3 class="card__t">PIN da viagem</h3>
+        <p style="color:rgba(245,240,230,.86)">O embarque só é confirmado quando o código confere, reduzindo o risco de entrar no carro errado.</p>
+      </article>
+      <article class="card" style="background:rgba(245,240,230,.10);border-color:rgba(245,240,230,.2)">
+        <span class="card__k" style="color:#F5F0E6">03</span>
+        <h3 class="card__t">Acompanhamento</h3>
+        <p style="color:rgba(245,240,230,.86)">Rota seguida em tempo real e compartilhável com quem a pessoa confia.</p>
+      </article>
+      <article class="card" style="background:rgba(245,240,230,.10);border-color:rgba(245,240,230,.2)">
+        <span class="card__k" style="color:#F5F0E6">04</span>
+        <h3 class="card__t">Pagamento rastreável</h3>
+        <p style="color:rgba(245,240,230,.86)">Menos dinheiro vivo no carro. Menos risco para os dois lados.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ---------------------------- IDENTIDADE CONCEITUAL ---------------------------- -->
+<section class="band band--deep">
+  <div class="band__in">
+    <p class="eyebrow">Ato 2 · 03 — Território visual</p>
+    <h2 class="big" style="max-width:16ch">Como essa marca poderia se parecer.</h2>
+    <p class="lede" style="margin-top:clamp(20px,3vw,30px);max-width:50ch">
+      Roxo profundo para autoridade e noite. Violeta para movimento e tecnologia.
+      Marfim para respiro e clareza. Verde apenas onde há confirmação — nunca como
+      cor de marca.
+    </p>
+
+    <div class="swatches">
+      <div class="sw"><div class="sw__chip" style="background:#14082A"></div><p class="sw__n">Roxo profundo</p><p class="sw__h">#14082A</p></div>
+      <div class="sw"><div class="sw__chip" style="background:#2B1150"></div><p class="sw__n">Roxo médio</p><p class="sw__h">#2B1150</p></div>
+      <div class="sw"><div class="sw__chip" style="background:#7C3AED"></div><p class="sw__n">Violeta</p><p class="sw__h">#7C3AED</p></div>
+      <div class="sw"><div class="sw__chip" style="background:#A78BFA"></div><p class="sw__n">Violeta claro</p><p class="sw__h">#A78BFA</p></div>
+      <div class="sw"><div class="sw__chip" style="background:#F5F0E6"></div><p class="sw__n">Marfim</p><p class="sw__h">#F5F0E6</p></div>
+      <div class="sw"><div class="sw__chip" style="background:#22C55E"></div><p class="sw__n">Verde · confirmado</p><p class="sw__h">#22C55E</p></div>
+    </div>
+
+    <div class="cards cards--3" style="margin-top:clamp(30px,4.4vw,48px)">
+      <article class="card">
+        <span class="card__k">Símbolo</span>
+        <svg class="glyph" viewBox="0 0 100 100" style="width:58px;color:#A78BFA" aria-hidden="true">
+          <path class="g-shield" d="M50 7 L88 30 L88 62 Q88 82 50 95 Q12 82 12 62 L12 30 Z"/>
+          <path class="g-route" d="M32 64 Q32 44 50 44 Q68 44 68 30"/>
+          <circle class="g-dot" cx="32" cy="64" r="6"/>
+        </svg>
+        <p>Escudo e rota na mesma forma. Funciona como ícone de app, adesivo de carro, chip de cartão e credencial.</p>
+      </article>
+      <article class="card">
+        <span class="card__k">Tipografia</span>
+        <p style="font-family:'Sora';font-weight:800;font-size:2.4rem;line-height:1;letter-spacing:-.05em;color:#F5F0E6;margin:0">Aa</p>
+        <p><strong style="color:#F5F0E6;font-weight:600">Sora</strong> — geométrica, contemporânea, legível em tela pequena e forte em título grande.</p>
+      </article>
+      <article class="card">
+        <span class="card__k">Tom de voz</span>
+        <p style="font-family:'Sora';font-weight:600;font-size:1.15rem;line-height:1.2;color:#F5F0E6;margin:0;letter-spacing:-.02em">Direto. Calmo. Sem promessa exagerada.</p>
+        <p>Uma marca que fala de segurança não pode soar ansiosa. Frases curtas, afirmativas, sem alarme.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ---------------------------- O CARTÃO ---------------------------- -->
+<section class="band band--graphite">
+  <div class="band__in">
+    <p class="eyebrow">Ato 2 · 04 — O cartão</p>
+    <h2 class="big" style="max-width:17ch">O cartão poderia transformar um app de corridas numa relação financeira.</h2>
+
+    <div class="cardstage">
+      <div class="paycard paycard--phys">
+        <div class="paycard__shine" aria-hidden="true"></div>
+        <div class="paycard__top">
+          <svg class="glyph paycard__glyph" viewBox="0 0 100 100" style="color:#F5F0E6" aria-hidden="true">
+            <path class="g-shield" d="M50 7 L88 30 L88 62 Q88 82 50 95 Q12 82 12 62 L12 30 Z"/>
+            <path class="g-route" d="M32 64 Q32 44 50 44 Q68 44 68 30"/>
+            <circle class="g-dot" cx="32" cy="64" r="6"/>
+          </svg>
+          <span class="paycard__kind">Cartão físico<br>conceitual</span>
+        </div>
+        <div class="paycard__chip" aria-hidden="true"></div>
+        <div>
+          <p class="paycard__num">•••• •••• •••• 4821</p>
+          <div class="paycard__foot" style="margin-top:12px">
+            <span class="paycard__name">Nova Marca · Motorista</span>
+            <span class="paycard__net">Kz</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="paycard paycard--virt">
+        <div class="paycard__shine" aria-hidden="true"></div>
+        <div class="paycard__top">
+          <svg class="glyph paycard__glyph" viewBox="0 0 100 100" style="color:#5B21B6" aria-hidden="true">
+            <path class="g-shield" d="M50 7 L88 30 L88 62 Q88 82 50 95 Q12 82 12 62 L12 30 Z"/>
+            <path class="g-route" d="M32 64 Q32 44 50 44 Q68 44 68 30"/>
+            <circle class="g-dot" cx="32" cy="64" r="6"/>
+          </svg>
+          <span class="paycard__kind" style="opacity:.55">Cartão virtual<br>conceitual</span>
+        </div>
+        <div class="paycard__chip" aria-hidden="true"></div>
+        <div>
+          <p class="paycard__num">•••• •••• •••• 9307</p>
+          <div class="paycard__foot" style="margin-top:12px">
+            <span class="paycard__name">Nova Marca · Passageiro</span>
+            <span class="paycard__net" style="opacity:.5">Kz</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards cards--3">
+      <article class="card">
+        <span class="card__k">Para o motorista</span>
+        <h3 class="card__t">Poderia receber sem depender de dinheiro vivo</h3>
+        <p>O ganho entraria na carteira e sairia pelo cartão — menos risco no carro e um histórico de renda que ele poderia comprovar.</p>
+      </article>
+      <article class="card">
+        <span class="card__k">Para o passageiro</span>
+        <h3 class="card__t">Pagaria sem troco e sem atrito</h3>
+        <p>Saldo, cartão ou outro meio integrado. A viagem terminaria com o pagamento já resolvido.</p>
+      </article>
+      <article class="card">
+        <span class="card__k">Para a empresa</span>
+        <h3 class="card__t">Deixaria de ser app e viraria infraestrutura</h3>
+        <p>Cada viagem geraria registro financeiro — a base para, no futuro, discutir crédito, seguro e fidelização com parceiros autorizados.</p>
+      </article>
+    </div>
+
+    <p class="note" style="margin-top:22px">
+      Conceito de produto, não produto financeiro. Nada aqui é cartão bancário, carteira licenciada,
+      NFC funcional ou integração com qualquer rede de pagamentos. Qualquer execução futura dependeria de
+      arquitetura técnica, regulação, bancos, instituições de pagamento e parceiros autorizados.
+    </p>
+  </div>
+</section>
+
+<!-- ---------------------------- FROTA E MOTORISTAS ---------------------------- -->
+<section class="band band--deep">
+  <div class="band__in">
+    <p class="eyebrow">Ato 2 · 05 — A marca fora da tela</p>
+    <h2 class="big" style="max-width:18ch">Se a promessa é segurança, ela precisa ser reconhecida na rua.</h2>
+    <p class="lede" style="margin-top:clamp(20px,3vw,30px);max-width:52ch">
+      Um app só é confiável quando o carro que para na frente da pessoa parece
+      confiável. Identidade de frota e identidade de motorista não são detalhe
+      de marca — são parte do produto de segurança.
+    </p>
+
+    <div class="fleet">
+      <div class="car">
+        <span class="car__k">Identidade da frota · conceito</span>
+        <svg viewBox="0 0 400 150" role="img" aria-label="Silhueta conceitual do veículo com faixa de identificação">
+          <path d="M40 112 L40 92 Q40 78 56 74 L104 62 Q140 40 196 40 L256 40 Q292 40 316 60 L348 72 Q366 78 366 94 L366 112 Z" fill="#2B1150" stroke="#A78BFA" stroke-width="2"/>
+          <path d="M118 62 Q146 46 192 46 L192 66 L114 66 Z" fill="#14082A" opacity=".8"/>
+          <path d="M202 46 L252 46 Q284 46 304 62 L202 66 Z" fill="#14082A" opacity=".8"/>
+          <rect x="40" y="96" width="326" height="10" fill="#7C3AED"/>
+          <rect x="150" y="76" width="106" height="16" rx="3" fill="#F5F0E6"/>
+          <text x="203" y="88" text-anchor="middle" font-family="Sora,sans-serif" font-size="9" font-weight="700" fill="#1C1526" letter-spacing="1.2">NOVA MARCA</text>
+          <g transform="translate(64,74) scale(.2)" fill="none" stroke="#A78BFA" stroke-width="5.5" stroke-linejoin="round">
+            <path d="M50 7 L88 30 L88 62 Q88 82 50 95 Q12 82 12 62 L12 30 Z"/>
+          </g>
+          <circle cx="112" cy="112" r="22" fill="#14141A" stroke="#A78BFA" stroke-width="2"/>
+          <circle cx="112" cy="112" r="8" fill="#2F2F38"/>
+          <circle cx="296" cy="112" r="22" fill="#14141A" stroke="#A78BFA" stroke-width="2"/>
+          <circle cx="296" cy="112" r="8" fill="#2F2F38"/>
+          <rect x="316" y="117" width="58" height="16" rx="2" fill="#F5F0E6"/>
+          <text x="345" y="128" text-anchor="middle" font-family="Sora,sans-serif" font-size="8.5" font-weight="700" fill="#1C1526" letter-spacing=".4">LD-48-92</text>
+        </svg>
+        <p>Faixa violeta contínua, símbolo na porta e placa visível. O passageiro identifica o carro certo de longe, antes mesmo de conferir o PIN.</p>
+      </div>
+
+      <div class="car">
+        <span class="car__k">Credencial do motorista · conceito</span>
+        <div class="badge" style="background:transparent;border:0;padding:0">
+          <div class="badge__head">
+            <svg class="badge__av" viewBox="0 0 64 64" role="img" aria-label="Avatar conceitual">
+              <circle cx="32" cy="32" r="32" fill="#5B21B6"/>
+              <circle cx="32" cy="25" r="11" fill="#A78BFA"/>
+              <path d="M11 60 Q11 40 32 40 Q53 40 53 60 Z" fill="#A78BFA"/>
+            </svg>
+            <div>
+              <p class="badge__n">Edvaldo M.</p>
+              <p class="badge__id">ID · 0 4 8 2 · LUANDA</p>
+            </div>
+          </div>
+          <div class="badge__seals">
+            <span class="seal"><b>✓</b>Identidade conferida</span>
+            <span class="seal"><b>✓</b>Carta de condução válida</span>
+            <span class="seal"><b>✓</b>Veículo inspecionado</span>
+            <span class="seal"><b>✓</b>Formação em atendimento</span>
+          </div>
+        </div>
+        <p>Credencial visível no carro, com foto, identificação e selos de verificação. O motorista deixa de ser anônimo — e isso protege os dois lados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------------------------- PAGAMENTOS E CARTEIRA ---------------------------- -->
+<section class="band band--ivory">
+  <div class="band__in">
+    <p class="eyebrow" style="color:rgba(28,21,38,.72)">Ato 2 · 06 — Pagamentos e carteira</p>
+    <h2 class="big" style="max-width:16ch">O dinheiro precisa ser tão seguro quanto a viagem.</h2>
+
+    <div class="cards cards--4">
+      <article class="card" style="background:#fff;border-color:rgba(28,21,38,.12)">
+        <span class="card__k" style="color:#7C3AED">Carteira</span>
+        <h3 class="card__t" style="color:#1C1526">Saldo dentro do app</h3>
+        <p style="color:rgba(28,21,38,.62)">Passageiro carregaria, motorista acumularia. O valor da viagem circularia sem passar por espécie.</p>
+      </article>
+      <article class="card" style="background:#fff;border-color:rgba(28,21,38,.12)">
+        <span class="card__k" style="color:#7C3AED">Cartão</span>
+        <h3 class="card__t" style="color:#1C1526">Físico e virtual</h3>
+        <p style="color:rgba(28,21,38,.62)">O motorista usaria o ganho fora do app, e a empresa passaria a fazer parte da vida financeira dele.</p>
+      </article>
+      <article class="card" style="background:#fff;border-color:rgba(28,21,38,.12)">
+        <span class="card__k" style="color:#7C3AED">Transparência</span>
+        <h3 class="card__t" style="color:#1C1526">Extrato por viagem</h3>
+        <p style="color:rgba(28,21,38,.62)">Cada corrida com valor, data e destino — um extrato que ele poderia apresentar.</p>
+      </article>
+      <article class="card" style="background:#fff;border-color:rgba(28,21,38,.12)">
+        <span class="card__k" style="color:#7C3AED">Integração</span>
+        <h3 class="card__t" style="color:#1C1526">Outros meios locais</h3>
+        <p style="color:rgba(28,21,38,.62)">Espaço para os meios de pagamento já usados em Angola, sem impor um único caminho.</p>
+      </article>
+    </div>
+
+    <p class="sig" style="margin-top:clamp(44px,6vw,72px);max-width:26ch;color:#1C1526">
+      Transparência para trabalhar. Confiança para receber.
+    </p>
+  </div>
+</section>
+
+<!-- ================================================================
+     SEÇÃO DE TRANSIÇÃO INTERATIVA
+     ================================================================ -->
+<section class="enter" id="experiencia">
+  <div class="enter__in">
+    <h2 class="enter__q">
+      <span>Quer ver</span>
+      <span>como essa empresa</span>
+      <span>pode funcionar?</span>
+    </h2>
+    <p class="enter__sub">Entre na experiência.</p>
+
+    <button type="button" class="enter__btn" id="open-sim" aria-haspopup="dialog">
+      <span>Aperte aqui</span>
+      <span>e entre na experiência</span>
+    </button>
+
+    <p class="enter__or">Ou experimente o conceito direto por um dos três lados:</p>
+    <div class="enter__modes">
+      <button type="button" class="enter__mode" data-open-mode="passageiro">Passageiro</button>
+      <button type="button" class="enter__mode" data-open-mode="motorista">Motorista</button>
+      <button type="button" class="enter__mode" data-open-mode="central">Central de operação</button>
+    </div>
+
+    <p class="enter__hint">Protótipo conceitual · simulação local · sem dados reais</p>
+
+    <noscript>
+      <p class="enter__hint" style="color:#F5F0E6;max-width:46ch;margin-left:auto;margin-right:auto;line-height:1.7">
+        A experiência interativa precisa de JavaScript ativado. Todo o restante da
+        apresentação continua disponível ao rolar a página.
+      </p>
+    </noscript>
+  </div>
+</section>
+
+<!-- ---------------------------- CAMPANHA E LANÇAMENTO ---------------------------- -->
+<section class="band band--deep">
+  <div class="band__in">
+    <p class="eyebrow">Ato 2 · 07 — Campanha e entrada no mercado</p>
+    <h2 class="big" style="max-width:17ch">A empresa não estreia com um app. Estreia com uma ideia na cabeça das pessoas.</h2>
+
+    <div class="camp">
+      <article class="piece piece--a">
+        <svg class="glyph piece__glyph" viewBox="0 0 100 100" style="color:#A78BFA" aria-hidden="true">
+          <path class="g-shield" d="M50 7 L88 30 L88 62 Q88 82 50 95 Q12 82 12 62 L12 30 Z"/>
+          <path class="g-route" d="M32 64 Q32 44 50 44 Q68 44 68 30"/>
+          <circle class="g-dot" cx="32" cy="64" r="6"/>
+        </svg>
+        <h3 class="piece__t" style="color:#F5F0E6">Chegar bem<br>é o mínimo.</h3>
+        <span class="piece__f" style="color:rgba(245,240,230,.75)">Peça conceitual · abertura</span>
+      </article>
+      <article class="piece piece--b">
+        <svg class="glyph piece__glyph" viewBox="0 0 100 100" style="color:#5B21B6" aria-hidden="true">
+          <path class="g-shield" d="M50 7 L88 30 L88 62 Q88 82 50 95 Q12 82 12 62 L12 30 Z"/>
+          <path class="g-route" d="M32 64 Q32 44 50 44 Q68 44 68 30"/>
+          <circle class="g-dot" cx="32" cy="64" r="6"/>
+        </svg>
+        <h3 class="piece__t">Você sabe<br>quem está<br>ao volante.</h3>
+        <span class="piece__f" style="color:rgba(28,21,38,.7)">Peça conceitual · segurança</span>
+      </article>
+      <article class="piece piece--c">
+        <svg class="glyph piece__glyph" viewBox="0 0 100 100" style="color:#4C1D95" aria-hidden="true">
+          <path class="g-shield" d="M50 7 L88 30 L88 62 Q88 82 50 95 Q12 82 12 62 L12 30 Z"/>
+          <path class="g-route" d="M32 64 Q32 44 50 44 Q68 44 68 30"/>
+          <circle class="g-dot" cx="32" cy="64" r="6"/>
+        </svg>
+        <h3 class="piece__t">Trabalhar hoje.<br>Receber hoje.</h3>
+        <span class="piece__f" style="color:rgba(28,11,53,.92)">Peça conceitual · motorista</span>
+      </article>
+    </div>
+
+    <div class="cards cards--3" style="margin-top:clamp(30px,4.4vw,48px)">
+      <article class="card">
+        <span class="card__k">Fase 01</span>
+        <h3 class="card__t">Recrutar antes de anunciar</h3>
+        <p>Sem frota verificada não há promessa a cumprir. A campanha começa pelos motoristas, não pelos passageiros.</p>
+      </article>
+      <article class="card">
+        <span class="card__k">Fase 02</span>
+        <h3 class="card__t">Provar numa praça só</h3>
+        <p>Uma zona de Luanda, densidade alta, operação controlada. Melhor dominar um bairro do que existir mal na cidade inteira.</p>
+      </article>
+      <article class="card">
+        <span class="card__k">Fase 03</span>
+        <h3 class="card__t">Abrir com a rua a favor</h3>
+        <p>Quando os carros já são reconhecidos, a mídia paga só amplifica o que a cidade já viu.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- transição de volta: marca nova → SAMBA -->
+<div class="shift" aria-hidden="true">
+  <span style="background:#14082A"></span>
+  <span style="background:#7C3AED"></span>
+  <span style="background:#5B21B6"></span>
+  <span style="background:#4128C9"></span>
+  <span style="background:#1B3CE8"></span>
+  <span style="background:#0B8B47"></span>
+  <span style="background:#024528"></span>
+</div>
+
+<!-- ================================================================
+     ATO 3 — SAMBA
+     Volta à identidade da agência.
+     ================================================================ -->
+<section class="band band--ink">
+  <div class="band__in">
+    <p class="eyebrow">Ato 3 · 01 — De volta à SAMBA</p>
+    <h2 class="big" style="max-width:15ch">Nada disso foi construído. Tudo isso foi <span style="color:#FDC40B">pensado.</span></h2>
+
+    <div class="split" style="margin-top:clamp(36px,5vw,58px)">
+      <p class="sig" style="max-width:20ch">É exatamente esse o trabalho da SAMBA.</p>
+      <div class="stack">
+        <p class="dim">
+          O que você acabou de ver não é um produto em desenvolvimento. É uma visão de
+          negócio traduzida em marca, experiência, cartão, frota, campanha e operação —
+          ao ponto de já se conseguir enxergar a empresa funcionando.
+        </p>
+        <p class="dim">
+          Essa é a diferença entre contratar quem programa e contratar quem pensa o
+          negócio. A tecnologia é a última etapa, não a primeira. E quando ela chegar,
+          já vai saber exatamente o que precisa fazer.
+        </p>
+      </div>
+    </div>
+
+    <div class="equation" style="margin-top:clamp(40px,6vw,64px)">
+      <span>Criamos a visão</span><span class="op">·</span>
+      <span>Desenhamos a experiência</span><span class="op">·</span>
+      <span>Construímos a marca</span><span class="op">·</span>
+      <span>Planejamos o lançamento</span><span class="op">·</span>
+      <span class="out">E preparamos o negócio para sair do papel</span>
+    </div>
+  </div>
+</section>
+
+<!-- ---------------------------- O QUE A SAMBA CONDUZ ---------------------------- -->
+<section class="band">
+  <div class="band__in">
+    <p class="eyebrow">Ato 3 · 02 — O que a SAMBA conduz</p>
+    <div class="split" style="align-items:end">
+      <h2 class="big">Não é um serviço. É a condução do projeto.</h2>
+      <p class="dim" style="max-width:48ch">
+        A SAMBA assume a camada estratégica e criativa do negócio inteiro — e, caso o
+        projeto avance, coordena as etapas necessárias para transformar a visão em
+        produto real, com os parceiros técnicos certos em cada frente.
+      </p>
+    </div>
+
+    <div class="svc">
+      <article class="svc__item">
+        <span class="svc__k"><b style="background:#0B8B47"></b>Fundação</span>
+        <h3 class="svc__t">Estratégia e posicionamento</h3>
+        <p>Que empresa é essa, para quem, contra quem e com qual promessa. A decisão que orienta todas as outras.</p>
+      </article>
+      <article class="svc__item">
+        <span class="svc__k"><b style="background:#0B8B47"></b>Fundação</span>
+        <h3 class="svc__t">Naming e arquitetura de marca</h3>
+        <p>Nome, território, hierarquia e sistema. O que a empresa se chama e o que esse nome carrega.</p>
+      </article>
+      <article class="svc__item">
+        <span class="svc__k"><b style="background:#FDC40B"></b>Marca</span>
+        <h3 class="svc__t">Branding e direção criativa</h3>
+        <p>Símbolo, paleta, tipografia, tom de voz e manual. A marca aplicada e pronta para operar.</p>
+      </article>
+      <article class="svc__item">
+        <span class="svc__k"><b style="background:#FDC40B"></b>Marca</span>
+        <h3 class="svc__t">Identidade de frota e motoristas</h3>
+        <p>Como o carro, o adesivo, a credencial e o uniforme comunicam a promessa na rua.</p>
+      </article>
+      <article class="svc__item">
+        <span class="svc__k"><b style="background:#1B3CE8"></b>Produto</span>
+        <h3 class="svc__t">Product concept e UX/UI</h3>
+        <p>Jornada do passageiro, do motorista e da operação. Telas, fluxos e protótipo navegável.</p>
+      </article>
+      <article class="svc__item">
+        <span class="svc__k"><b style="background:#1B3CE8"></b>Produto</span>
+        <h3 class="svc__t">Estratégia de segurança</h3>
+        <p>Verificação, PIN, acompanhamento, compartilhamento e SOS desenhados como produto, no centro da experiência.</p>
+      </article>
+      <article class="svc__item">
+        <span class="svc__k"><b style="background:#1B3CE8"></b>Produto</span>
+        <h3 class="svc__t">Conceito de pagamentos e cartão</h3>
+        <p>Carteira, extrato, cartão físico e virtual. O desenho do modelo antes da escolha do parceiro financeiro.</p>
+      </article>
+      <article class="svc__item">
+        <span class="svc__k"><b style="background:#1B3CE8"></b>Produto</span>
+        <h3 class="svc__t">Painel operacional</h3>
+        <p>O que a central precisa ver para gerir frota, viagens, pagamentos, documentos e alertas.</p>
+      </article>
+      <article class="svc__item">
+        <span class="svc__k"><b style="background:#0B8B47"></b>Mercado</span>
+        <h3 class="svc__t">Marketing e campanha</h3>
+        <p>Conceito de campanha, peças, praça e mensagem de entrada. O que a cidade ouve primeiro.</p>
+      </article>
+      <article class="svc__item">
+        <span class="svc__k"><b style="background:#0B8B47"></b>Mercado</span>
+        <h3 class="svc__t">Lançamento e growth</h3>
+        <p>Plano de entrada, recrutamento de frota, aquisição e crescimento depois do primeiro mês.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ---------------------------- COMO SERIA CONDUZIDO ---------------------------- -->
+<section class="band band--sun">
+  <div class="band__in">
+    <p class="eyebrow">Ato 3 · 03 — Como o projeto seria conduzido</p>
+    <h2 class="big" style="max-width:16ch">Cinco fases entre a conversa de hoje e a empresa na rua.</h2>
+
+    <div class="phases">
+      <div class="phase">
+        <span class="phase__k">Fase 01</span>
+        <h3 class="phase__t">Imersão e estratégia</h3>
+        <ul>
+          <li>Diagnóstico de mercado</li>
+          <li>Modelo de negócio</li>
+          <li>Posicionamento</li>
+          <li>Definição de promessa</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <span class="phase__k">Fase 02</span>
+        <h3 class="phase__t">Marca</h3>
+        <ul>
+          <li>Naming</li>
+          <li>Símbolo e sistema visual</li>
+          <li>Tom de voz</li>
+          <li>Manual de marca</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <span class="phase__k">Fase 03</span>
+        <h3 class="phase__t">Produto</h3>
+        <ul>
+          <li>Jornadas e fluxos</li>
+          <li>UX/UI das três frentes</li>
+          <li>Protótipo navegável</li>
+          <li>Especificação para tecnologia</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <span class="phase__k">Fase 04</span>
+        <h3 class="phase__t">Experiência e campanha</h3>
+        <ul>
+          <li>Frota e credenciais</li>
+          <li>Conceito de campanha</li>
+          <li>Peças e praça</li>
+          <li>Plano de lançamento</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <span class="phase__k">Fase 05</span>
+        <h3 class="phase__t">Lançamento e growth</h3>
+        <ul>
+          <li>Recrutamento de frota</li>
+          <li>Entrada no mercado</li>
+          <li>Aquisição e performance</li>
+          <li>Leitura e ajuste</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="note" style="margin-top:22px;max-width:64ch">
+      Escopo e sequência conceituais, apresentados para dar dimensão ao projeto. Prazos,
+      equipe e investimento são definidos na proposta comercial, após o alinhamento de
+      ambição e escopo com a cliente.
+    </p>
+  </div>
+</section>
+
+<!-- ---------------------------- FECHAMENTO ---------------------------- -->
+<section class="band band--ink close">
+  <div class="band__in">
+    <div class="close__mark">
+      <img src="../assets/samba-simbolo-on-dark.png" alt="Símbolo da SAMBA" width="360" height="239" loading="lazy" decoding="async" style="display:block;height:clamp(88px,14vw,148px);width:auto">
+      <img src="../assets/samba-wordmark-on-dark.png" alt="SAMBA" width="1200" height="343" loading="lazy" decoding="async" style="display:block;width:100%;max-width:760px;height:auto">
+      <span class="wordmark__sub" style="margin:0">Creative Strategic Agency</span>
+    </div>
+
+    <h2 class="huge">
+      <span>Primeiro</span>
+      <span>a empresa</span>
+      <span>existe na cabeça.</span>
+      <span style="color:#FDC40B">Depois no mundo.</span>
+    </h2>
+
+    <p class="sig--en" style="margin-top:clamp(26px,4vw,40px)">Vision first. Brand second. Product follows.</p>
+
+    <div class="beat beat--color beat--live" aria-hidden="true" style="margin-top:clamp(30px,4vw,44px)"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </div>
+</section>
+
+<div class="ruler" aria-hidden="true">
+  <span style="background:#1B3CE8;width:21%"></span>
+  <span style="background:#FDC40B;width:9%"></span>
+  <span style="background:#0B8B47;width:22%"></span>
+  <span style="background:#FDC40B;width:14%"></span>
+  <span style="background:#024528;width:34%"></span>
+</div>
+
+<footer class="foot">
+  <div class="foot__in">
+    <span>Samba · Creative Strategic Agency</span>
+    <span>Apresentação conceitual · Setembro 2026</span>
+  </div>
+</footer>
+
+<!-- ================================================================
+     PROTÓTIPO CONCEITUAL — modal de simulação
+     Sem backend. Sem API. Sem rede. Sem persistência. Sem dados reais.
+     ================================================================ -->
+<dialog class="sim" id="sim" aria-label="Protótipo conceitual da experiência">
+
+  <div class="sim__bar">
+    <p class="sim__sig">Concept experience<br><b>by Samba</b></p>
+    <button type="button" class="sim__exit" id="sim-exit">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      <span>Voltar para a apresentação</span>
+    </button>
+  </div>
+
+  <div class="sim__modes" role="tablist" aria-label="Modos da simulação">
+    <button type="button" class="sim__mode" role="tab" data-mode="passageiro" aria-selected="true">Passageiro</button>
+    <button type="button" class="sim__mode" role="tab" data-mode="motorista" aria-selected="false">Motorista</button>
+    <button type="button" class="sim__mode" role="tab" data-mode="central" aria-selected="false">Central</button>
+  </div>
+
+  <div class="sim__stage" id="sim-stage"></div>
+
+  <div class="sim__ctl">
+    <button type="button" class="sim__back" id="sim-back" aria-label="Voltar um passo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <button type="button" class="sim__restart" id="sim-restart" aria-label="Recomeçar esta experiência" title="Recomeçar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 109-9 9 9 0 00-6.4 2.7L3 8"/><path d="M3 3v5h5"/></svg>
+    </button>
+    <div class="sim__dots" id="sim-dots" aria-hidden="true"></div>
+    <button type="button" class="sim__next" id="sim-next">Continuar</button>
+  </div>
+
+  <p class="sim__disc">Protótipo conceitual · simulação local · sem dados reais</p>
+</dialog>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ------------------------------------------------------------------
+     PROTÓTIPO CONCEITUAL
+     Simulação puramente visual. Nenhuma chamada de rede, nenhum
+     armazenamento, nenhum dado real. Os valores, nomes, placas e
+     locais são fictícios e existem só para demonstrar a visão de produto.
+     ------------------------------------------------------------------ */
+
+  var dlg   = document.getElementById('sim');
+  var stage = document.getElementById('sim-stage');
+  var dots  = document.getElementById('sim-dots');
+  var next  = document.getElementById('sim-next');
+  var back  = document.getElementById('sim-back');
+  var open  = document.getElementById('open-sim');
+  var exit  = document.getElementById('sim-exit');
+  var redo  = document.getElementById('sim-restart');
+  var tabs  = Array.prototype.slice.call(document.querySelectorAll('.sim__mode'));
+  var quick = Array.prototype.slice.call(document.querySelectorAll('[data-open-mode]'));
+
+  if(!dlg || !stage || !open) return;
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------------------- ícones ---------------------- */
+  var I = {
+    pin:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1116 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+    star: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21.1 7 14.2 2 9.3l6.9-1L12 2z"/></svg>',
+    check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>',
+    share:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>',
+    heart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 5.6a5 5 0 00-7.1 0L12 7.3l-1.7-1.7a5 5 0 00-7.1 7.1L12 21l8.8-8.3a5 5 0 000-7.1z"/></svg>',
+    sos:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9l-8 13.9A2 2 0 004 20.8h16a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg>',
+    wallet:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12V7H5a2 2 0 010-4h13v4"/><path d="M3 5v14a2 2 0 002 2h15v-5"/><path d="M18 12a2 2 0 100 4h4v-4z"/></svg>',
+    card: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>',
+    coin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5h5M9.5 14.5h5"/></svg>',
+    more: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>',
+    car:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17h14M4 17v-4l2-5h12l2 5v4"/><circle cx="7.5" cy="17" r="1.8"/><circle cx="16.5" cy="17" r="1.8"/></svg>',
+    doc:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5"/></svg>',
+    users:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 20v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="3.5"/><path d="M22 20v-2a4 4 0 00-3-3.9"/></svg>',
+    bell: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 10-12 0c0 7-3 8-3 8h18s-3-1-3-8"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>',
+    route:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="19" r="3"/><circle cx="18" cy="5" r="3"/><path d="M9 19h6a4 4 0 000-8H9a4 4 0 010-8h6"/></svg>'
+  };
+
+  function avatar(size, a, b){
+    return '<svg class="'+(size||'s-driver__av')+'" viewBox="0 0 64 64" role="img" aria-label="Avatar conceitual">'+
+      '<circle cx="32" cy="32" r="32" fill="'+(a||'#5B21B6')+'"/>'+
+      '<circle cx="32" cy="25" r="11" fill="'+(b||'#A78BFA')+'"/>'+
+      '<path d="M11 60 Q11 40 32 40 Q53 40 53 60 Z" fill="'+(b||'#A78BFA')+'"/></svg>';
+  }
+
+  function tripMap(){
+    return '<div class="s-map"><svg viewBox="0 0 320 190" role="img" aria-label="Mapa conceitual da rota">'+
+      '<path class="s-map__road" d="M-10 55 H330 M-10 130 H330 M70 -10 V200 M215 -10 V200"/>'+
+      '<path class="s-map__path" d="M46 152 L70 152 L70 130 L215 130 L215 55 L268 55"/>'+
+      '<circle class="s-map__org" cx="46" cy="152" r="7"/>'+
+      '<path class="s-map__pin" d="M268 40c-6 0-11 5-11 11 0 8 11 18 11 18s11-10 11-18c0-6-5-11-11-11z"/>'+
+      '<g class="s-map__car" transform="translate(208,122)"><rect x="0" y="0" width="15" height="15" rx="4"/></g>'+
+      '<text class="s-map__lbl" x="46" y="174">TALATONA</text>'+
+      '<text class="s-map__lbl" x="238" y="30">ILHA DO CABO</text>'+
+      '</svg></div>';
+  }
+
+  /* ---------------------- MODO 1 — PASSAGEIRO ---------------------- */
+  var PASSAGEIRO = [
+    { cta:'Escolher destino', html:
+      '<p class="s-kick">Boa tarde</p>'+
+      '<h2 class="s-h">Para onde você vai?</h2>'+
+      '<div class="s-field">'+I.pin+'<span>Digite o seu destino</span></div>'+
+      '<div class="s-route" style="margin-top:2px">'+
+        '<div class="s-stop"><b></b><div><em>Recente</em><strong>Aeroporto de Luanda</strong></div></div>'+
+        '<div class="s-stop s-stop--end"><b></b><div><em>Recente</em><strong>Kilamba · Bloco J</strong></div></div>'+
+      '</div>'+
+      '<div class="s-spacer"></div>'+
+      '<p class="s-p">O passageiro abre o app e a primeira pergunta é a única que importa. Nada de banner, nada de promoção.</p>'
+    },
+    { cta:'Ver estimativa', html:
+      '<p class="s-kick">Trajeto</p>'+
+      '<h2 class="s-h">Confirme o percurso</h2>'+
+      '<div class="s-route">'+
+        '<div class="s-stop"><b></b><div><em>Origem</em><strong>Talatona · Via S8</strong></div></div>'+
+        '<div class="s-stop s-stop--end"><b></b><div><em>Destino</em><strong>Ilha do Cabo</strong></div></div>'+
+      '</div>'+
+      '<div class="s-eta"><div><em>Distância</em><strong>14,2 km</strong></div><div style="text-align:right"><em>Tempo estimado</em><strong>26 min</strong></div></div>'+
+      '<div class="s-spacer"></div>'+
+      '<p class="s-p">Origem e destino visíveis antes de qualquer valor. Sem surpresa no fim.</p>'
+    },
+    { cta:'Pedir viagem', html:
+      '<p class="s-kick">Valor estimado</p>'+
+      '<h2 class="s-h">Preço fechado antes de entrar no carro</h2>'+
+      '<div class="s-price"><b>6.000 Kz</b><em>Estimativa conceitual · sem taxa escondida</em></div>'+
+      '<div class="s-eta"><div><em>Tipo</em><strong>Padrão verificado</strong></div><div style="text-align:right"><em>Chegada</em><strong>4 min</strong></div></div>'+
+      '<div class="s-spacer"></div>'+
+      '<p class="s-p">O valor aparece antes do pedido, não depois da viagem. Previsibilidade é parte da confiança.</p>'
+    },
+    { cta:'Ver verificação', html:
+      '<p class="s-kick">Motorista encontrado</p>'+
+      '<h2 class="s-h">Quem vem buscar você</h2>'+
+      '<div class="s-driver">'+avatar()+
+        '<div class="s-driver__i">'+
+          '<p class="s-driver__n">Edvaldo M.</p>'+
+          '<p class="s-driver__m">Toyota Corolla · Cinzento</p>'+
+          '<span class="s-driver__r">'+I.star+'4,9 · 1.284 viagens</span>'+
+        '</div>'+
+      '</div>'+
+      '<span class="s-plate">LD-48-92-AB</span>'+
+      '<div class="s-spacer"></div>'+
+      '<p class="s-p">Nome, avaliação, carro e placa antes da chegada. O passageiro sabe exatamente o que procurar na rua.</p>'
+    },
+    { cta:'Receber PIN', html:
+      '<p class="s-kick">Status de segurança</p>'+
+      '<h2 class="s-h">Verificado antes de rodar</h2>'+
+      '<div class="s-seals">'+
+        '<div class="s-seal"><b>✓</b><span>Motorista verificado</span></div>'+
+        '<div class="s-seal"><b>✓</b><span>Veículo verificado</span></div>'+
+      '</div>'+
+      '<div class="s-spacer"></div>'+
+      '<p class="s-p">A verificação não é um selo decorativo. É a condição para o motorista poder receber uma corrida.</p>'
+    },
+    { cta:'Confirmar embarque', html:
+      '<p class="s-kick">PIN da viagem</p>'+
+      '<h2 class="s-h">A viagem só começa com o código certo</h2>'+
+      '<div class="s-pin">'+
+        '<div class="s-pin__d"><i>7</i><i>4</i><i>2</i><i>9</i></div>'+
+        '<em>Diga o código ao motorista<br>Sem ele, o embarque não é confirmado</em>'+
+      '</div>'+
+      '<div class="s-spacer"></div>'+
+      '<p class="s-p">É o mecanismo mais simples do produto — e o que mais reduz o risco de entrar no carro errado.</p>'
+    },
+    { cta:'Acompanhar rota', html:
+      '<div class="s-ok" style="padding-bottom:4px"><div class="s-ok__c">'+I.check+'</div></div>'+
+      '<h2 class="s-h" style="text-align:center">Viagem protegida</h2>'+
+      '<div class="s-seals">'+
+        '<div class="s-seal"><b>✓</b><span>PIN confirmado</span></div>'+
+        '<div class="s-seal"><b>✓</b><span>Rota acompanhada</span></div>'+
+        '<div class="s-seal"><b>✓</b><span>Compartilhamento disponível</span></div>'+
+      '</div>'+
+      '<div class="s-spacer"></div>'+
+      '<p class="s-p">A viagem inicia num estado explícito de proteção. A pessoa vê que está acompanhada.</p>'
+    },
+    { cta:'Abrir segurança', html:
+      '<p class="s-kick">Em viagem</p>'+
+      '<h2 class="s-h">Rota acompanhada</h2>'+
+      tripMap()+
+      '<div class="s-eta"><div><em>Chegada prevista</em><strong>19:42</strong></div><div style="text-align:right"><em>Restante</em><strong>11 min</strong></div></div>'+
+      '<p class="s-p">Mapa conceitual. O acompanhamento real dependeria de integração de geolocalização, fora do escopo desta apresentação.</p>'
+    },
+    { cta:'Ir para pagamento', html:
+      '<p class="s-kick">Segurança</p>'+
+      '<h2 class="s-h">Sempre a um toque</h2>'+
+      '<div class="s-safe">'+
+        '<button type="button" class="s-safebtn" data-toast="Link da viagem enviado · simulação">'+I.share+'<span>Compartilhar viagem<small>Envia a rota em tempo real</small></span></button>'+
+        '<button type="button" class="s-safebtn" data-toast="Contato de confiança avisado · simulação">'+I.heart+'<span>Contato de confiança<small>Avisa alguém escolhido antes</small></span></button>'+
+        '<button type="button" class="s-safebtn s-safebtn--sos" data-toast="Em produção, acionaria a central 24h · simulação">'+I.sos+'<span>SOS<small>Aciona a central de operação</small></span></button>'+
+      '</div>'+
+      '<div id="toast-slot"></div>'+
+      '<div class="s-spacer"></div>'+
+      '<p class="s-p">Toque nos botões para ver o comportamento. Nenhuma ação real é executada.</p>'
+    },
+    { cta:'Confirmar pagamento', html:
+      '<p class="s-kick">Pagamento</p>'+
+      '<h2 class="s-h">Escolha como pagar</h2>'+
+      '<div class="s-pays" role="group" aria-label="Meios de pagamento conceituais">'+
+        '<button type="button" class="s-pay" aria-pressed="true"><span class="s-pay__ico">'+I.wallet+'</span><span><strong>Carteira</strong><small>Saldo 12.400 Kz</small></span><span class="s-pay__tick">✓</span></button>'+
+        '<button type="button" class="s-pay" aria-pressed="false"><span class="s-pay__ico">'+I.card+'</span><span><strong>Cartão</strong><small>•••• 9307</small></span><span class="s-pay__tick">✓</span></button>'+
+        '<button type="button" class="s-pay" aria-pressed="false"><span class="s-pay__ico">'+I.coin+'</span><span><strong>Saldo promocional</strong><small>1.000 Kz disponíveis</small></span><span class="s-pay__tick">✓</span></button>'+
+        '<button type="button" class="s-pay" aria-pressed="false"><span class="s-pay__ico">'+I.more+'</span><span><strong>Outro meio integrado</strong><small>Espaço para meios locais</small></span><span class="s-pay__tick">✓</span></button>'+
+      '</div>'+
+      '<div class="s-spacer"></div>'+
+      '<p class="s-p">Meios conceituais. Nenhuma transação é processada nesta simulação.</p>'
+    },
+    { cta:'Finalizar viagem', html:
+      '<div class="s-ok"><div class="s-ok__c">'+I.check+'</div>'+
+        '<div><h2 class="s-h" style="text-align:center">Pagamento confirmado</h2>'+
+        '<p class="s-p" style="text-align:center;margin-top:8px">6.000 Kz · Carteira</p></div>'+
+      '</div>'+
+      '<div class="s-eta"><div><em>Viagem</em><strong>#48-2291</strong></div><div style="text-align:right"><em>Recibo</em><strong>Disponível</strong></div></div>'+
+      '<div class="s-spacer"></div>'+
+      '<p class="s-p">Cada viagem gera registro. É o que constrói histórico para os dois lados.</p>'
+    },
+    { cta:'Ver o outro lado', html:
+      '<p class="s-kick">Viagem concluída</p>'+
+      '<h2 class="s-h">Como foi sua experiência?</h2>'+
+      '<div class="s-stars" role="group" aria-label="Avaliação conceitual">'+
+        '<button type="button" class="s-star on" data-v="1">'+I.star+'</button>'+
+        '<button type="button" class="s-star on" data-v="2">'+I.star+'</button>'+
+        '<button type="button" class="s-star on" data-v="3">'+I.star+'</button>'+
+        '<button type="button" class="s-star on" data-v="4">'+I.star+'</button>'+
+        '<button type="button" class="s-star on" data-v="5">'+I.star+'</button>'+
+      '</div>'+
+      '<p class="s-p" style="text-align:center">A avaliação alimenta a verificação contínua do motorista.</p>'+
+      '<div class="s-spacer"></div>'+
+      '<p class="s-quote">Agora veja<br>o outro lado<em>da viagem.</em></p>'
+    }
+  ];
+
+  /* ---------------------- MODO 2 — MOTORISTA ---------------------- */
+  var MOTORISTA = [
+    { cta:'Aguardar corrida', html:
+      '<p class="s-kick">Sessão do motorista</p>'+
+      '<h2 class="s-h">Você está online</h2>'+
+      '<div class="s-status"><span class="s-status__l"><b></b>Online</span><span class="s-status__v">Talatona · zona 3</span></div>'+
+      '<div class="s-eta"><div><em>Hoje</em><strong>3 viagens</strong></div><div style="text-align:right"><em>Ganho do dia</em><strong>9.700 Kz</strong></div></div>'+
+      '<div class="s-driver" style="margin-top:2px">'+avatar('s-driver__av','#2B1150','#A78BFA')+
+        '<div class="s-driver__i"><p class="s-driver__n">Edvaldo M.</p><p class="s-driver__m">Toyota Corolla · LD-48-92-AB</p>'+
+        '<span class="s-driver__r">'+I.star+'4,9 · verificado</span></div>'+
+      '</div>'+
+      '<div class="s-spacer"></div>'+
+      '<p class="s-p">O motorista controla quando está disponível. Nada roda sem que ele decida entrar.</p>'
+    },
+    { cta:'Aceitar corrida', html:
+      '<p class="s-kick">Nova corrida</p>'+
+      '<div class="s-hail">'+
+        '<div class="s-hail__top"><span class="s-hail__tag">Chamada recebida</span><span class="s-hail__timer">00:12</span></div>'+
+        '<p class="s-hail__val">6.000 Kz</p>'+
+        '<div class="s-route" style="background:rgba(245,240,230,.06);border-color:rgba(245,240,230,.16)">'+
+          '<div class="s-stop"><b></b><div><em>Embarque · 4 min</em><strong>Talatona · Via S8</strong></div></div>'+
+          '<div class="s-stop s-stop--end"><b></b><div><em>Destino · 14,2 km</em><strong>Ilha do Cabo</strong></div></div>'+
+        '</div>'+
+      '</div>'+
+      '<div class="s-spacer"></div>'+
+      '<p class="s-p">Valor, origem e destino antes de aceitar. O motorista decide com informação, não no escuro.</p>'
+    },
+    { cta:'Ver passageiro', html:
+      '<div class="s-ok" style="padding-bottom:4px"><div class="s-ok__c">'+I.check+'</div></div>'+
+      '<h2 class="s-h" style="text-align:center">Corrida aceita</h2>'+
+      '<div class="s-route">'+
+        '<div class="s-stop"><b></b><div><em>A caminho do embarque</em><strong>Talatona · Via S8</strong></div></div>'+
+        '<div class="s-stop s-stop--end"><b></b><div><em>Depois</em><strong>Ilha do Cabo</strong></div></div>'+
+      '</div>'+
+      '<div class="s-eta"><div><em>Chegada ao embarque</em><strong>4 min</strong></div><div style="text-align:right"><em>Corrida</em><strong>#48-2291</strong></div></div>'+
+      '<div class="s-spacer"></div>'+
+      '<p class="s-p">A navegação até o passageiro começa. A corrida já tem número e registro.</p>'
+    },
+    { cta:'Pedir PIN', html:
+      '<p class="s-kick">Passageiro</p>'+
+      '<h2 class="s-h">Verificado dos dois lados</h2>'+
+      '<div class="s-driver">'+avatar('s-driver__av','#4C1D95','#C4B5FD')+
+        '<div class="s-driver__i"><p class="s-driver__n">Ana C.</p><p class="s-driver__m">Conta verificada · 96 viagens</p>'+
+        '<span class="s-driver__r">'+I.star+'4,8</span></div>'+
+      '</div>'+
+      '<div class="s-seals"><div class="s-seal"><b>✓</b><span>Passageiro verificado</span></div></div>'+
+      '<div class="s-spacer"></div>'+
+      '<p class="s-p">A verificação protege também o motorista. Ele sabe quem vai entrar no carro dele.</p>'
+    },
+    { cta:'Iniciar viagem', html:
+      '<p class="s-kick">Confirmação de embarque</p>'+
+      '<h2 class="s-h">Peça o PIN ao passageiro</h2>'+
+      '<div class="s-pin">'+
+        '<div class="s-pin__d"><i>7</i><i>4</i><i>2</i><i>9</i></div>'+
+        '<em>Código conferido<br>A viagem pode começar</em>'+
+      '</div>'+
+      '<div class="s-seals" style="margin-top:2px"><div class="s-seal"><b>✓</b><span>PIN confirmado</span></div></div>'+
+      '<div class="s-spacer"></div>'+
+      '<p class="s-p">O mesmo código nos dois aplicativos. Simples de usar e difícil de contornar.</p>'
+    },
+    { cta:'Finalizar corrida', html:
+      '<p class="s-kick">Em viagem</p>'+
+      '<h2 class="s-h">Rota registrada</h2>'+
+      tripMap()+
+      '<div class="s-eta"><div><em>Chegada prevista</em><strong>19:42</strong></div><div style="text-align:right"><em>Valor</em><strong>6.000 Kz</strong></div></div>'+
+      '<p class="s-p">Mapa conceitual. Em produção, a rota registrada ajudaria a esclarecer o que aconteceu em caso de disputa.</p>'
+    },
+    { cta:'Ver ganho', html:
+      '<div class="s-ok"><div class="s-ok__c">'+I.check+'</div>'+
+        '<div><h2 class="s-h" style="text-align:center">Corrida concluída</h2>'+
+        '<p class="s-p" style="text-align:center;margin-top:8px">Ilha do Cabo · 26 min · 14,2 km</p></div>'+
+      '</div>'+
+      '<div class="s-seals"><div class="s-seal"><b>✓</b><span>Pagamento registrado</span></div></div>'+
+      '<div class="s-spacer"></div>'+
+      '<p class="s-p">Reduz a necessidade de cobrar na hora, ter troco ou guardar dinheiro dentro do carro.</p>'
+    },
+    { cta:'Abrir carteira', html:
+      '<p class="s-kick">Ganho registrado</p>'+
+      '<div class="s-wallet">'+
+        '<div><span class="s-wallet__k">Desta corrida</span><p class="s-wallet__gain">+ 4.800 Kz</p></div>'+
+        '<div class="s-wallet__hr"></div>'+
+        '<div class="s-wallet__row"><span class="s-wallet__k">Valor da corrida</span><span class="s-wallet__sm">6.000 Kz</span></div>'+
+        '<div class="s-wallet__row"><span class="s-wallet__k">Repasse ao motorista</span><span class="s-wallet__sm">80%</span></div>'+
+        '<div class="s-wallet__hr"></div>'+
+        '<div><span class="s-wallet__k">Saldo atual</span><p class="s-wallet__bal">18.500 Kz</p></div>'+
+      '</div>'+
+      '<div class="s-seals"><div class="s-seal"><b>✓</b><span>Pagamento registrado</span></div></div>'+
+      '<div class="s-spacer"></div>'+
+      '<p class="s-p">Valores ilustrativos. A carteira é um conceito de produto — não há operação financeira real.</p>'
+    },
+    { cta:'Ver a central', html:
+      '<p class="s-kick">Driver wallet</p>'+
+      '<h2 class="s-h">O dinheiro sai do carro e entra numa conta</h2>'+
+      '<div class="s-pays">'+
+        '<div class="s-pay" style="cursor:default"><span class="s-pay__ico">'+I.card+'</span><span><strong>Cartão Nova Marca</strong><small>Usa o ganho fora do app</small></span></div>'+
+        '<div class="s-pay" style="cursor:default"><span class="s-pay__ico">'+I.doc+'</span><span><strong>Extrato por viagem</strong><small>Comprovação de renda</small></span></div>'+
+      '</div>'+
+      '<div class="s-spacer"></div>'+
+      '<p class="s-quote">Transparência<br>para trabalhar.<em>Confiança para receber.</em></p>'
+    }
+  ];
+
+  /* ---------------------- MODO 3 — CENTRAL ---------------------- */
+  function opsPanel(){
+    return '<div class="ops">'+
+      '<div class="ops__head">'+
+        '<div>'+
+          '<p class="opsbox__t" style="margin-bottom:6px">Central de operação · conceito</p>'+
+          '<h2 class="ops__t">Luanda · Zona 3</h2>'+
+        '</div>'+
+        '<span class="ops__live"><b></b>Simulação</span>'+
+      '</div>'+
+
+      '<div class="ops__kpis">'+
+        '<div class="kpi"><b>10</b><span>Veículos<br>na frota</span></div>'+
+        '<div class="kpi kpi--vi"><b>7</b><span>Em viagem<br>agora</span></div>'+
+        '<div class="kpi"><b>3</b><span>Disponíveis<br>na zona</span></div>'+
+        '<div class="kpi kpi--ok"><b>0</b><span>Alertas<br>críticos</span></div>'+
+      '</div>'+
+
+      '<div class="ops__grid">'+
+        '<div class="ops__map"><svg viewBox="0 0 520 300" role="img" aria-label="Mapa conceitual da operação">'+
+          '<path class="ops__maproad" d="M-10 70 H530 M-10 160 H530 M-10 244 H530 M90 -10 V310 M230 -10 V310 M370 -10 V310"/>'+
+          '<g class="ops__unit"><rect x="84" y="64" width="13" height="13" rx="4"/><rect x="224" y="154" width="13" height="13" rx="4"/><rect x="364" y="66" width="13" height="13" rx="4"/><rect x="150" y="238" width="13" height="13" rx="4"/><rect x="300" y="238" width="13" height="13" rx="4"/><rect x="430" y="154" width="13" height="13" rx="4"/><rect x="230" y="60" width="13" height="13" rx="4"/></g>'+
+          '<g class="ops__unit--free"><rect x="40" y="154" width="13" height="13" rx="4"/><rect x="368" y="238" width="13" height="13" rx="4"/><rect x="470" y="64" width="13" height="13" rx="4"/></g>'+
+          '<text class="ops__maplbl" x="20" y="56">TALATONA</text>'+
+          '<text class="ops__maplbl" x="248" y="146">MIRAMAR</text>'+
+          '<text class="ops__maplbl" x="388" y="232">ILHA</text>'+
+          '<text class="ops__maplbl" x="100" y="290">KILAMBA</text>'+
+        '</svg></div>'+
+
+        '<div class="ops__side">'+
+          '<div class="opsbox">'+
+            '<p class="opsbox__t">Viagens em curso</p>'+
+            '<div class="opsrow opsrow--vi"><b></b>#48-2291 · Talatona → Ilha<span>11 min</span></div>'+
+            '<div class="opsrow opsrow--vi"><b></b>#48-2288 · Miramar → Aeroporto<span>6 min</span></div>'+
+            '<div class="opsrow opsrow--vi"><b></b>#48-2284 · Kilamba → Talatona<span>18 min</span></div>'+
+            '<div class="opsrow opsrow--nu"><b></b>+ 4 viagens em curso<span></span></div>'+
+          '</div>'+
+          '<div class="opsbox">'+
+            '<p class="opsbox__t">Estado da frota</p>'+
+            '<div class="opsrow opsrow--ok"><b></b>Documentos em dia<span>10 / 10</span></div>'+
+            '<div class="opsrow opsrow--ok"><b></b>Motoristas verificados<span>10 / 10</span></div>'+
+            '<div class="opsrow opsrow--nu"><b></b>Inspeção a vencer<span>2 · 30 dias</span></div>'+
+          '</div>'+
+        '</div>'+
+      '</div>'+
+
+      '<div class="ops__tiles">'+
+        '<div class="tile">'+I.users+'<b>Motoristas</b><span>Cadastro, selos e avaliação</span></div>'+
+        '<div class="tile">'+I.route+'<b>Viagens</b><span>Histórico e rota registada</span></div>'+
+        '<div class="tile">'+I.wallet+'<b>Pagamentos</b><span>Repasses e carteira</span></div>'+
+        '<div class="tile">'+I.doc+'<b>Documentos</b><span>Validade e renovação</span></div>'+
+        '<div class="tile tile--alert">'+I.sos+'<b>SOS</b><span>Nenhum acionamento</span></div>'+
+        '<div class="tile">'+I.bell+'<b>Alertas</b><span>Desvio, parada, atraso</span></div>'+
+      '</div>'+
+
+      '<p class="ops__quote">O passageiro vê simplicidade.<br><em>A operação vê tudo.</em></p>'+
+      '<p class="s-p" style="font-size:12px">Painel conceitual. Números, viagens e estados são ilustrativos — não há dados, integração ou monitoramento real.</p>'+
+    '</div>';
+  }
+
+  var CENTRAL = [ { cta:'Voltar para a apresentação', html:opsPanel(), full:true } ];
+
+  var FLOWS = { passageiro:PASSAGEIRO, motorista:MOTORISTA, central:CENTRAL };
+  var ORDER = ['passageiro','motorista','central'];
+  var mode = 'passageiro';
+  var idx  = { passageiro:0, motorista:0, central:0 };
+  var lastFocus = null;
+
+  /* ---------------------- render ---------------------- */
+  function phone(inner){
+    return '<div class="phone">'+
+      '<div class="phone__status" aria-hidden="true"><i>19:31</i><i>Conceito</i><i>100%</i></div>'+
+      '<div class="screen" role="group" aria-live="polite">'+inner+'</div>'+
+    '</div>';
+  }
+
+  function syncCtl(){
+    var flow = FLOWS[mode], i = idx[mode], step = flow[i], last = (i === flow.length - 1);
+
+    next.textContent = step.cta;
+    next.classList.toggle('sim__next--done', last);
+    back.disabled = (i === 0);
+    redo.disabled = (i === 0 && mode === ORDER[0]);
+
+    if(flow.length < 2){ dots.innerHTML = ''; return; }
+    var d = '';
+    for(var k = 0; k < flow.length; k++){ d += '<i class="'+(k <= i ? 'on' : '')+'"></i>'; }
+    dots.innerHTML = d;
+  }
+
+  function paint(){
+    var step = FLOWS[mode][idx[mode]];
+    stage.innerHTML = step.full ? step.html : phone(step.html);
+    var el = stage.querySelector('.ops') || stage.querySelector('.screen');
+    if(el && !reduce){
+      el.classList.add('sw');
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){ el.classList.remove('sw'); });
+      });
+    }
+    syncCtl();
+  }
+
+  var pending = null;
+  function render(anim){
+    /* cliques rápidos enfileiravam timers e causavam pintura dupla */
+    if(pending){ clearTimeout(pending); pending = null; }
+    var el = stage.querySelector('.ops') || stage.querySelector('.screen');
+    if(anim && el && !reduce){
+      el.classList.add('sw');
+      pending = setTimeout(function(){ pending = null; paint(); }, 170);
+    } else {
+      paint();
+    }
+  }
+
+  function setMode(m, anim){
+    if(!FLOWS[m]) return;
+    mode = m;
+    tabs.forEach(function(t){ t.setAttribute('aria-selected', String(t.dataset.mode === m)); });
+    render(anim !== false);
+  }
+
+  /* ---------------------- navegação ---------------------- */
+  next.addEventListener('click', function(){
+    var flow = FLOWS[mode], i = idx[mode];
+    if(i < flow.length - 1){
+      idx[mode] = i + 1;
+      render(true);
+      return;
+    }
+    var pos = ORDER.indexOf(mode);
+    if(pos < ORDER.length - 1){
+      var nm = ORDER[pos + 1];
+      idx[nm] = 0;
+      setMode(nm, true);
+    } else {
+      closeSim();
+    }
+  });
+
+  back.addEventListener('click', function(){
+    if(idx[mode] > 0){ idx[mode] = idx[mode] - 1; render(true); }
+  });
+
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){
+      /* escolher um modo pela aba recomeça aquela história do início —
+         numa apresentação, cair na última tela do fluxo confunde */
+      var m = t.dataset.mode;
+      if(m !== mode) idx[m] = 0;
+      setMode(m, true);
+    });
+  });
+
+  /* ---------------------- interações dentro das telas ---------------------- */
+  stage.addEventListener('click', function(e){
+    var t = e.target;
+
+    var safe = t.closest ? t.closest('.s-safebtn') : null;
+    if(safe && safe.dataset.toast){
+      var slot = stage.querySelector('#toast-slot');
+      if(slot) slot.innerHTML = '<p class="s-toast">'+safe.dataset.toast+'</p>';
+      return;
+    }
+
+    var pay = t.closest ? t.closest('.s-pay') : null;
+    if(pay && pay.tagName === 'BUTTON'){
+      stage.querySelectorAll('.s-pay').forEach(function(p){ p.setAttribute('aria-pressed','false'); });
+      pay.setAttribute('aria-pressed','true');
+      return;
+    }
+
+    var star = t.closest ? t.closest('.s-star') : null;
+    if(star){
+      var v = parseInt(star.dataset.v, 10);
+      stage.querySelectorAll('.s-star').forEach(function(s){
+        s.classList.toggle('on', parseInt(s.dataset.v, 10) <= v);
+      });
+    }
+  });
+
+  /* ---------------------- reset / abrir / fechar ---------------------- */
+  /* estado vive só em memória — sem localStorage, sem persistência */
+  function resetAll(){ idx.passageiro = 0; idx.motorista = 0; idx.central = 0; }
+
+  function openSim(startMode){
+    lastFocus = document.activeElement;
+    resetAll();
+    setMode(FLOWS[startMode] ? startMode : 'passageiro', false);
+    if(typeof dlg.showModal === 'function'){ dlg.showModal(); } else { dlg.setAttribute('open',''); }
+    document.body.classList.add('is-locked');
+    next.focus();
+  }
+
+  redo.addEventListener('click', function(){
+    /* recomeça a história do modo atual, sem sair do protótipo */
+    idx[mode] = 0;
+    render(true);
+    next.focus();
+  });
+
+  quick.forEach(function(b){
+    b.addEventListener('click', function(){ openSim(b.dataset.openMode); });
+  });
+
+  function closeSim(){
+    if(dlg.open && typeof dlg.close === 'function'){ dlg.close(); } else { dlg.removeAttribute('open'); }
+  }
+
+  dlg.addEventListener('close', function(){
+    document.body.classList.remove('is-locked');
+    resetAll();
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+  });
+
+  open.addEventListener('click', function(){ openSim('passageiro'); });
+  exit.addEventListener('click', closeSim);
+
+})();
+</script>
+
+</body>
+</html>
